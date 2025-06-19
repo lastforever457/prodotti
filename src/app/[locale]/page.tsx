@@ -65,15 +65,12 @@ import {
   CheckCircle,
   ChevronDown,
   Clock,
-  Eye,
   Globe,
   Heart,
-  Leaf,
   Mail,
   Menu,
   Package,
   Phone,
-  Play,
   Quote,
   RefreshCw,
   Shield,
@@ -362,7 +359,6 @@ export default function Page() {
         answer:
           "Odatda 3-7 ish kuni ichida yetkazib beramiz. Ba'zi maxsus buyurtmalar 10-14 kun olishi mumkin. Toshkent shahri bo'yicha bir kunda yetkazib berish xizmati ham mavjud.",
         icon: Clock,
-        color: 'from-emerald-500 to-green-600',
         bgColor: 'bg-emerald-50',
       },
       {
@@ -371,7 +367,6 @@ export default function Page() {
         answer:
           "Barcha mahsulotlarimiz rasmiy distribyutorlardan olinadi va original sertifikatlar bilan ta'minlanadi. Har bir mahsulot bilan birga authenticity sertifikati beriladi.",
         icon: Shield,
-        color: 'from-green-500 to-emerald-600',
         bgColor: 'bg-green-50',
       },
       {
@@ -379,7 +374,6 @@ export default function Page() {
         answer:
           "Naqd pul, bank o'tkazmasi, Click, Payme, Uzcard va boshqa qulay usullarda to'lov qilishingiz mumkin. Onlayn to'lovlar uchun 100% xavfsizlik kafolatlanadi.",
         icon: CheckCircle,
-        color: 'from-teal-500 to-emerald-600',
         bgColor: 'bg-teal-50',
       },
       {
@@ -387,7 +381,6 @@ export default function Page() {
         answer:
           "Ha, 14 kun ichida mahsulotni qaytarish yoki almashtirish imkoniyati mavjud. Mahsulot original holatida bo'lishi va barcha hujjatlar saqlanishi kerak.",
         icon: RefreshCw,
-        color: 'from-emerald-600 to-green-700',
         bgColor: 'bg-emerald-50',
       },
     ],
@@ -488,12 +481,13 @@ export default function Page() {
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/25">
-                <Leaf className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-green-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-            </div>
+            <Image
+              src="/images/image.png"
+              alt="PRODOTTI boutique"
+              width={150}
+              height={75}
+              className="size-12 rounded-lg w-auto"
+            />
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-700 to-green-800 bg-clip-text text-transparent">
                 PRODOTTI
@@ -525,7 +519,7 @@ export default function Page() {
 
           <div className="flex items-center space-x-4">
             <ChangeLanguage />
-            <Button className="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white shadow-lg shadow-emerald-500/25 hidden md:flex group">
+            <Button className="bg-gradient-to-r from-emerald-600 to-[#0E3633] hover:from-[#0E3633] hover:to-emerald-600 text-white shadow-lg shadow-emerald-500/25 hidden md:flex group transition-all">
               <span>{t('order now')}</span>
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
@@ -612,28 +606,13 @@ export default function Page() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
               {t('advantage-desc')}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button className="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white px-8 py-4 rounded-full shadow-lg shadow-emerald-500/25 group text-lg">
-                <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                Boshlab ko'rish
-              </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 px-8 py-4 rounded-full text-lg group"
-              >
-                <Eye className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                Katalogni ko'rish
-              </Button>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.map((feature, index) => (
               <div
                 key={index}
-                className="group relative p-8 rounded-3xl bg-white/80 backdrop-blur-sm border border-emerald-100/50 hover:bg-white hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 animate-fade-scale"
+                className="group relative p-8 rounded-3xl shadow shadow-[#0E3633] bg-white/80 backdrop-blur-sm border border-emerald-100/50 hover:bg-[#0E3633] hover:shadow-2xl hover:shadow-[#0E3633]/10 transition-all duration-500 hover:-translate-y-3 animate-fade-scale"
                 style={{
                   animationDelay: `${Number.parseInt(feature.delay) + 200}ms`,
                 }}
@@ -655,10 +634,10 @@ export default function Page() {
                 </div>
 
                 <div className="relative text-center space-y-3">
-                  <h4 className="text-xl font-bold text-gray-800 group-hover:text-emerald-700 transition-colors duration-300">
+                  <h4 className="text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300">
                     {feature.title}
                   </h4>
-                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
+                  <p className="text-gray-600 group-hover:text-white transition-colors duration-300 leading-relaxed">
                     {feature.desc}
                   </p>
                 </div>
@@ -688,7 +667,7 @@ export default function Page() {
             <div className="space-y-8 animate-slide-left">
               <div className="space-y-6">
                 <PremiumBadge>{t('about us')}</PremiumBadge>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
                   Yevropa{' '}
                   <span className="text-emerald-600 relative">
                     an'analarini
@@ -817,22 +796,17 @@ export default function Page() {
                   <div
                     className={`absolute inset-0 bg-gradient-to-t ${category.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                   ></div>
-                  <Badge className="absolute top-4 left-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white border-0 shadow-lg">
+                  <Badge className="absolute top-4 left-4 bg-gradient-to-r from-[#154e4a] to-green-600 text-white border-0 shadow-lg">
                     {category.badge}
                   </Badge>
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button className="bg-white/90 text-emerald-700 hover:bg-white">
-                        <Eye className="mr-2 w-4 h-4" />
-                        Ko'rish
-                      </Button>
-                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#154e4a] transition-colors duration-300">
                     {category.title}
                   </h3>
                   <p className="text-gray-600">{category.desc}</p>
@@ -869,7 +843,7 @@ export default function Page() {
                 style={{ animationDelay: `${index * 150 + 300}ms` }}
               >
                 <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/25 relative overflow-hidden">
+                  <div className="w-20 h-20 bg-gradient-to-r from-[#154e4a] to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/25 relative overflow-hidden">
                     <step.icon className="w-10 h-10 text-white relative z-10" />
 
                     {/* Rotating Border */}
@@ -906,7 +880,7 @@ export default function Page() {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="py-24 bg-gradient-to-br from-emerald-600 to-green-700 text-white relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-[#154e4a] to-[#0E3633] text-white relative overflow-hidden"
       >
         {/* Animated Background */}
         <div className="absolute inset-0">
@@ -1173,9 +1147,9 @@ export default function Page() {
                   >
                     <div className="px-6 pb-6">
                       <div
-                        className={`p-4 rounded-xl bg-gradient-to-r ${faq.color} bg-opacity-5 border-l-4 border-emerald-500 relative overflow-hidden`}
+                        className={`p-4 rounded-xl bg-gradient-to-r from-[#258b85] to-[#0E3633] bg-opacity-5 relative overflow-hidden`}
                       >
-                        <p className="text-gray-700 leading-relaxed relative z-10">
+                        <p className="text-stone-300 leading-relaxed relative z-10">
                           {faq.answer}
                         </p>
 

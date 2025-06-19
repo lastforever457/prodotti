@@ -10,8 +10,8 @@ const About = () => {
     <section id="about" className="py-24 bg-white">
       <div className="container-cs">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8 flex flex-col lg:flex-row justify-center items-center lg:justify-start">
-            <div className="space-y-6 flex flex-col lg:flex-row justify-center items-center lg:justify-start">
+          <div className="space-y-8 flex flex-col justify-center items-center lg:justify-start lg:items-start">
+            <div className="space-y-6 flex flex-col justify-center items-center lg:justify-start lg:items-start">
               <BadgeCs>{t('about us')}</BadgeCs>
               <h2 className="text-4xl md:text-5xl text-center lg:text-start font-bold text-gray-800">
                 Yevropa <span className="text-main">an'analarini</span>{' '}

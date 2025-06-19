@@ -226,7 +226,7 @@ export default function Page() {
         delay: '300',
       },
     ],
-    []
+    [t]
   )
 
   const categories = useMemo(
@@ -274,7 +274,7 @@ export default function Page() {
         gradient: 'from-emerald-600 to-teal-700',
       },
     ],
-    []
+    [t]
   )
 
   const processSteps = useMemo(
@@ -304,7 +304,7 @@ export default function Page() {
         icon: Truck,
       },
     ],
-    []
+    [t]
   )
 
   const stats = useMemo(
@@ -350,7 +350,7 @@ export default function Page() {
         delay: '400',
       },
     ],
-    []
+    [t]
   )
 
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -391,7 +391,7 @@ export default function Page() {
         bgColor: 'bg-emerald-50',
       },
     ],
-    []
+    [t]
   )
 
   return (

@@ -26,7 +26,12 @@ export const generateMetadata = async ({
       'twitter:title': t('head-title'),
       'twitter:description': t('head-desc'),
       'twitter:creator': '@prodotti',
-      'twitter:image:src': '/images/image.png',
+      'twitter:image': {
+        url: '/images/image.png',
+        width: 1200,
+        height: 630,
+        alt: t('head-title'),
+      },
       'og:image': {
         url: '/images/image.png',
         width: 1200,

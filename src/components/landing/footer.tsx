@@ -16,7 +16,10 @@ const Footer = () => {
   const t = useTranslations()
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-20">
+    <footer
+      id="contact"
+      className="bg-gradient-to-br from-gray-900 to-emerald-900 text-white py-20 relative overflow-hidden"
+    >
       <div className="container-cs">
         <div className="grid md:grid-cols-5 gap-8 mb-12">
           <div className="md:col-span-2 space-y-6">

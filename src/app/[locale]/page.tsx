@@ -53,6 +53,7 @@
 
 import type React from 'react'
 
+import Footer from '@/components/landing/footer'
 import PremiumBadge from '@/components/landing/premium-badge'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -1221,13 +1222,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer
-        id="contact"
-        className="bg-gradient-to-br from-gray-900 to-emerald-900 text-white py-20 relative overflow-hidden"
-      >
-        {/* Background Animation */}
-      </footer>
+      <Footer />
     </div>
   )
 }

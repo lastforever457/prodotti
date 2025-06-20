@@ -482,6 +482,7 @@ export default function Page() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
             <Image
+              draggable={false}
               src="/images/image.png"
               alt="PRODOTTI boutique"
               width={150}
@@ -489,10 +490,8 @@ export default function Page() {
               className="size-12 rounded-lg w-auto"
             />
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-700 to-green-800 bg-clip-text text-transparent">
-                PRODOTTI
-              </h1>
-              <p className="text-xs text-emerald-600 font-medium">Boutique</p>
+              <h1 className="text-xl font-bold text-[#D1A563]">PRODOTTI</h1>
+              <p className="text-xs text-[#D1A563] font-medium">Boutique</p>
             </div>
           </Link>
 
@@ -565,6 +564,109 @@ export default function Page() {
           </div>
         )}
       </header>
+
+      {/* About Section */}
+      <section
+        id="about"
+        className="py-24 bg-gradient-to-br from-[#154e4a] to-[#0E3633] relative overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23059669' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          ></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 animate-slide-left">
+              <div className="space-y-6">
+                <PremiumBadge>{t('about us')}</PremiumBadge>
+                <h2 className="text-4xl md:text-5xl font-bold text-white leading-snug">
+                  Yevropa{' '}
+                  <span className="text-emerald-600 relative">
+                    an'analarini
+                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"></div>
+                  </span>{' '}
+                  O'zbekistonga olib kelmoqdamiz
+                </h2>
+                <p className="text-lg text-stone-200 leading-relaxed">
+                  2020-yilda tashkil etilgan PRODOTTI boutique - bu Italiya,
+                  Fransiya, Ispaniya va boshqa Yevropa davlatlarining eng yaxshi
+                  mahsulotlarini tanlab, sizga yetkazib beruvchi ishonchli
+                  hamkor.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  'Shaxsiy tanlov va sifat nazorati',
+                  "To'g'ridan-to'g'ri import qilish",
+                  'Rasmiy kafolat va sertifikatlar',
+                  'Mijozlar bilan uzoq muddatli munosabatlar',
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-3 group animate-slide-left"
+                    style={{ animationDelay: `${index * 100 + 400}ms` }}
+                  >
+                    <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-stone-300 font-medium group-hover:text-emerald-700 transition-colors duration-300">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* <Button className="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white px-8 py-3 rounded-full shadow-lg shadow-emerald-500/25 group">
+                Batafsil ma'lumot
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button> */}
+            </div>
+
+            <div className="relative animate-slide-right">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/20 group">
+                <Image
+                  src="/images/placeholder.png"
+                  alt="About Us"
+                  width={500}
+                  height={600}
+                  className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent"></div>
+
+                {/* Overlay Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+
+              <FloatingElement delay={1}>
+                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-emerald-100 group hover:shadow-2xl transition-shadow duration-300">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Globe className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-800">15+ davlat</div>
+                      <div className="text-sm text-gray-600">
+                        Hamkorlik qilamiz
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FloatingElement>
+
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
+              <div className="absolute top-1/4 -left-2 w-4 h-4 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full animate-bounce"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 overflow-hidden">
@@ -650,110 +752,10 @@ export default function Page() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-white relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23059669' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-slide-left">
-              <div className="space-y-6">
-                <PremiumBadge>{t('about us')}</PremiumBadge>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-                  Yevropa{' '}
-                  <span className="text-emerald-600 relative">
-                    an'analarini
-                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"></div>
-                  </span>{' '}
-                  O'zbekistonga olib kelmoqdamiz
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  2020-yilda tashkil etilgan PRODOTTI boutique - bu Italiya,
-                  Fransiya, Ispaniya va boshqa Yevropa davlatlarining eng yaxshi
-                  mahsulotlarini tanlab, sizga yetkazib beruvchi ishonchli
-                  hamkor.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  'Shaxsiy tanlov va sifat nazorati',
-                  "To'g'ridan-to'g'ri import qilish",
-                  'Rasmiy kafolat va sertifikatlar',
-                  'Mijozlar bilan uzoq muddatli munosabatlar',
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 group animate-slide-left"
-                    style={{ animationDelay: `${index * 100 + 400}ms` }}
-                  >
-                    <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <CheckCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-gray-700 font-medium group-hover:text-emerald-700 transition-colors duration-300">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <Button className="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white px-8 py-3 rounded-full shadow-lg shadow-emerald-500/25 group">
-                Batafsil ma'lumot
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </div>
-
-            <div className="relative animate-slide-right">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/20 group">
-                <Image
-                  src="/images/placeholder.png"
-                  alt="About Us"
-                  width={500}
-                  height={600}
-                  className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent"></div>
-
-                {/* Overlay Pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-
-              <FloatingElement delay={1}>
-                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-emerald-100 group hover:shadow-2xl transition-shadow duration-300">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-800">15+ davlat</div>
-                      <div className="text-sm text-gray-600">
-                        Hamkorlik qilamiz
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </FloatingElement>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
-              <div className="absolute top-1/4 -left-2 w-4 h-4 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full animate-bounce"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Products Section */}
       <section
         id="products"
-        className="py-24 bg-gradient-to-br from-emerald-50 to-green-50 relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-[#154e4a] to-[#0E3633] relative overflow-hidden"
       >
         {/* Animated Background */}
         <div className="absolute inset-0">
@@ -770,10 +772,10 @@ export default function Page() {
             <PremiumBadge className="mb-6">
               {t('Mahsulotlar katalogi')}
             </PremiumBadge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               {t('eksklyuziv kolleksiyalar')}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-stone-300 max-w-3xl mx-auto">
               {t('products-desc')}
             </p>
           </div>
@@ -1085,14 +1087,17 @@ export default function Page() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-white relative overflow-hidden">
+      <section
+        id="faq"
+        className="py-24 bg-gradient-to-br from-[#154e4a] to-[#0E3633] relative overflow-hidden"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-slide-up">
             <PremiumBadge className="mb-6">FAQ</PremiumBadge>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {t('frequently asked questions')}
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-stone-300 max-w-2xl mx-auto">
               {t('faq-desc')}
             </p>
           </div>

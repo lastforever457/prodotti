@@ -484,7 +484,7 @@ export default function Page() {
             <Image
               draggable={false}
               src="/images/image.png"
-              alt="PRODOTTI boutique"
+              alt="PRODOTTI Boutique"
               width={150}
               height={75}
               className="size-12 rounded-lg w-auto"
@@ -594,7 +594,7 @@ export default function Page() {
                   O'zbekistonga olib kelmoqdamiz
                 </h2>
                 <p className="text-lg text-stone-200 leading-relaxed">
-                  2020-yilda tashkil etilgan PRODOTTI boutique - bu Italiya,
+                  2020-yilda tashkil etilgan PRODOTTI Boutique - bu Italiya,
                   Fransiya, Ispaniya va boshqa Yevropa davlatlarining eng yaxshi
                   mahsulotlarini tanlab, sizga yetkazib beruvchi ishonchli
                   hamkor.
@@ -926,7 +926,7 @@ export default function Page() {
               {
                 name: 'Dilnoza Karimova',
                 role: 'Biznes ayol',
-                text: 'PRODOTTI boutique orqali Italiyadan olib kelgan sumkam haqiqatan ham ajoyib! Sifati va dizayni mukammal.',
+                text: 'PRODOTTI Boutique orqali Italiyadan olib kelgan sumkam haqiqatan ham ajoyib! Sifati va dizayni mukammal.',
                 rating: 5,
                 image: '/images/placeholder.png',
               },

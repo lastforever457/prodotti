@@ -25,7 +25,7 @@ const Footer = () => {
           <div className="md:col-span-2 space-y-6">
             <Image
               src={icon}
-              alt="PRODOTTI boutique"
+              alt="PRODOTTI Boutique"
               width={150}
               height={75}
               className="h-16 w-auto"
@@ -128,7 +128,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
           <p>
-            &copy; {new Date().getFullYear()} PRODOTTI boutique.{' '}
+            &copy; {new Date().getFullYear()} PRODOTTI Boutique.{' '}
             {t('Barcha huquqlar himoyalangan')}
           </p>
         </div>

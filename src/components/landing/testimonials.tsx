@@ -28,7 +28,7 @@ const Testimonials = () => {
             {
               name: 'Dilnoza Karimova',
               role: 'Biznes ayol',
-              text: 'PRODOTTI boutique orqali Italiyadan olib kelgan sumkam haqiqatan ham ajoyib! Sifati va dizayni mukammal.',
+              text: 'PRODOTTI Boutique orqali Italiyadan olib kelgan sumkam haqiqatan ham ajoyib! Sifati va dizayni mukammal.',
               rating: 5,
               image: '/images/placeholder.png',
             },

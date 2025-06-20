@@ -28,7 +28,7 @@ const Header = () => {
         <Link href={'/'} className="flex items-center space-x-3">
           <Image
             src={icon}
-            alt="PRODOTTI boutique"
+            alt="PRODOTTI Boutique"
             width={120}
             height={60}
             className="h-12 w-auto rounded-full md:hidden"

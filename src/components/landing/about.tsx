@@ -18,7 +18,7 @@ const About = () => {
                 O'zbekistonga olib kelmoqdamiz
               </h2>
               <p className="text-lg md:text-xl text-center lg:text-start text-gray-600 leading-relaxed">
-                2020-yilda tashkil etilgan PRODOTTI boutique - bu Italiya,
+                2020-yilda tashkil etilgan PRODOTTI Boutique - bu Italiya,
                 Fransiya, Ispaniya va boshqa Yevropa davlatlarining eng yaxshi
                 mahsulotlarini tanlab, sizga yetkazib beruvchi ishonchli hamkor.
               </p>

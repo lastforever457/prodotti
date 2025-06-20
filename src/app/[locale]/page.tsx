@@ -1,54 +1,3 @@
-// import About from '@/components/landing/about'
-// import Faq from '@/components/landing/faq'
-// import Feature from '@/components/landing/feature'
-// import Footer from '@/components/landing/footer'
-// import Header from '@/components/landing/header'
-// import Hero from '@/components/landing/hero'
-// import Process from '@/components/landing/process'
-// import Products from '@/components/landing/products'
-// import Stats from '@/components/landing/stats'
-// import Testimonials from '@/components/landing/testimonials'
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-main via-white to-main">
-//       <Header />
-//       {/* Hero Section */}
-//       <Hero />
-
-//       {/* Features Section */}
-//       <Feature />
-
-//       {/* About Section */}
-//       <About />
-
-//       {/* Products Categories */}
-//       <Products />
-
-//       {/* Process Section */}
-//       <Process />
-
-//       {/* Testimonials Section */}
-//       <Testimonials />
-
-//       {/* Stats Section */}
-//       <Stats />
-
-//       {/* Newsletter Section */}
-//       {/* <Newsletter /> */}
-
-//       {/* FAQ Section */}
-//       <Faq />
-
-//       {/* CTA Section */}
-//       {/* <Cta /> */}
-
-//       {/* Footer */}
-//       <Footer />
-//     </div>
-//   )
-// }
-
 'use client'
 
 import type React from 'react'
@@ -60,19 +9,16 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import ChangeLanguage from '@/components/widgets/change-language'
 import {
-  ArrowRight,
   Award,
   CheckCircle,
   ChevronDown,
   Clock,
   Globe,
   Heart,
-  Mail,
   Menu,
   Package,
   Phone,
   Quote,
-  RefreshCw,
   Shield,
   Star,
   Truck,
@@ -83,6 +29,12 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { FaTelegramPlane } from 'react-icons/fa'
+import fabbri from '../../../public/images/fabbri.png'
+import farchioni from '../../../public/images/farchioni.png'
+import granoro from '../../../public/images/granoro.png'
+import italcarciofi from '../../../public/images/italcarciofi.png'
+import street from '../../../public/images/street.png'
 // Animated Counter Component
 const AnimatedCounter = ({
   end,
@@ -198,14 +150,14 @@ export default function Page() {
         bgColor: 'bg-emerald-50',
         delay: '0',
       },
-      {
-        icon: Truck,
-        title: t('Tez yetkazish'),
-        desc: t('3-7 kun ichida'),
-        color: 'from-green-500 to-emerald-600',
-        bgColor: 'bg-green-50',
-        delay: '100',
-      },
+      // {
+      //   icon: Truck,
+      //   title: t('Tez yetkazish'),
+      //   desc: t('3-7 kun ichida'),
+      //   color: 'from-green-500 to-emerald-600',
+      //   bgColor: 'bg-green-50',
+      //   delay: '100',
+      // },
       {
         icon: Award,
         title: t('Premium sifat'),
@@ -214,14 +166,14 @@ export default function Page() {
         bgColor: 'bg-teal-50',
         delay: '200',
       },
-      {
-        icon: Users,
-        title: t("24/7 qo'llab-quvvatlash"),
-        desc: t('Har doim yordamda'),
-        color: 'from-emerald-600 to-green-700',
-        bgColor: 'bg-emerald-50',
-        delay: '300',
-      },
+      // {
+      //   icon: Users,
+      //   title: t("24/7 qo'llab-quvvatlash"),
+      //   desc: t('Har doim yordamda'),
+      //   color: 'from-emerald-600 to-green-700',
+      //   bgColor: 'bg-emerald-50',
+      //   delay: '300',
+      // },
     ],
     [t]
   )
@@ -229,11 +181,12 @@ export default function Page() {
   const categories = useMemo(
     () => [
       {
-        title: 'Italyan modasi',
-        desc: 'Gucci, Prada, Versace',
+        title: t('Italya mahsulotlari'),
+        desc: 'Italcarciofi, Granoro, Farchioni, FABBRI',
         image: '/images/placeholder.png',
         badge: t('Yangi kolleksiya'),
         gradient: 'from-emerald-600 to-green-700',
+        images: [italcarciofi, granoro, farchioni, fabbri],
       },
       {
         title: 'Fransuz kosmetikasi',
@@ -355,32 +308,15 @@ export default function Page() {
   const faqs = useMemo(
     () => [
       {
-        question: 'Mahsulotlar qanchalik tez yetkaziladi?',
-        answer:
-          "Odatda 3-7 ish kuni ichida yetkazib beramiz. Ba'zi maxsus buyurtmalar 10-14 kun olishi mumkin. Toshkent shahri bo'yicha bir kunda yetkazib berish xizmati ham mavjud.",
-        icon: Clock,
-        bgColor: 'bg-emerald-50',
-      },
-      {
-        question:
-          "Mahsulotlar originalligiga qanday ishonch hosil qilsam bo'ladi?",
-        answer:
-          "Barcha mahsulotlarimiz rasmiy distribyutorlardan olinadi va original sertifikatlar bilan ta'minlanadi. Har bir mahsulot bilan birga authenticity sertifikati beriladi.",
-        icon: Shield,
-        bgColor: 'bg-green-50',
-      },
-      {
-        question: "To'lov qanday usullarda amalga oshiriladi?",
-        answer:
-          "Naqd pul, bank o'tkazmasi, Click, Payme, Uzcard va boshqa qulay usullarda to'lov qilishingiz mumkin. Onlayn to'lovlar uchun 100% xavfsizlik kafolatlanadi.",
+        question: t("To'lov qanday usullarda amalga oshiriladi"),
+        answer: t('payment-desc'),
         icon: CheckCircle,
         bgColor: 'bg-teal-50',
       },
       {
-        question: 'Mahsulotni qaytarish mumkinmi?',
-        answer:
-          "Ha, 14 kun ichida mahsulotni qaytarish yoki almashtirish imkoniyati mavjud. Mahsulot original holatida bo'lishi va barcha hujjatlar saqlanishi kerak.",
-        icon: RefreshCw,
+        question: t('Manzilingiz qayerda'),
+        answer: t('faq-2-answer'),
+        icon: Clock,
         bgColor: 'bg-emerald-50',
       },
     ],
@@ -500,7 +436,6 @@ export default function Page() {
             {[
               { href: '#about', label: t('about us') },
               { href: '#products', label: t('products') },
-              { href: '#process', label: t('process') },
               { href: '#testimonials', label: t('comments') },
               { href: '#faq', label: t('faq') },
             ].map((item) => (
@@ -518,10 +453,6 @@ export default function Page() {
 
           <div className="flex items-center space-x-4">
             <ChangeLanguage />
-            <Button className="bg-gradient-to-r from-emerald-600 to-[#0E3633] hover:from-[#0E3633] hover:to-emerald-600 text-white shadow-lg shadow-emerald-500/25 hidden md:flex group transition-all">
-              <span>{t('order now')}</span>
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
 
             {/* Mobile Menu Button */}
             <button
@@ -586,27 +517,19 @@ export default function Page() {
               <div className="space-y-6">
                 <PremiumBadge>{t('about us')}</PremiumBadge>
                 <h2 className="text-4xl md:text-5xl font-bold text-white leading-snug">
-                  Yevropa{' '}
-                  <span className="text-emerald-600 relative">
-                    an'analarini
-                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"></div>
-                  </span>{' '}
-                  O'zbekistonga olib kelmoqdamiz
+                  {t('hero-title')}
                 </h2>
                 <p className="text-lg text-stone-200 leading-relaxed">
-                  2020-yilda tashkil etilgan PRODOTTI Boutique - bu Italiya,
-                  Fransiya, Ispaniya va boshqa Yevropa davlatlarining eng yaxshi
-                  mahsulotlarini tanlab, sizga yetkazib beruvchi ishonchli
-                  hamkor.
+                  {t('hero-title-2')}
                 </p>
               </div>
 
               <div className="space-y-4">
                 {[
-                  'Shaxsiy tanlov va sifat nazorati',
-                  "To'g'ridan-to'g'ri import qilish",
-                  'Rasmiy kafolat va sertifikatlar',
-                  'Mijozlar bilan uzoq muddatli munosabatlar',
+                  t('Shaxsiy tanlov va sifat nazorati'),
+                  t("To'g'ridan-to'g'ri import qilish"),
+                  t('Rasmiy kafolat va sertifikatlar'),
+                  t('Mijozlar bilan uzoq muddatli munosabatlar'),
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -632,7 +555,7 @@ export default function Page() {
             <div className="relative animate-slide-right">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/20 group">
                 <Image
-                  src="/images/placeholder.png"
+                  src={street}
                   alt="About Us"
                   width={500}
                   height={600}
@@ -643,7 +566,7 @@ export default function Page() {
                 {/* Overlay Pattern */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-
+              {/*
               <FloatingElement delay={1}>
                 <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-emerald-100 group hover:shadow-2xl transition-shadow duration-300">
                   <div className="flex items-center space-x-4">
@@ -658,7 +581,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-              </FloatingElement>
+              </FloatingElement> */}
 
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
@@ -710,7 +633,7 @@ export default function Page() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {data.map((feature, index) => (
               <div
                 key={index}
@@ -808,6 +731,18 @@ export default function Page() {
                   </div>
                 </div>
                 <CardContent className="p-6">
+                  <div className="flex justify-start items-center gap-1 flex-wrap">
+                    {category?.images?.map((image, index) => (
+                      <Image
+                        key={index}
+                        src={image}
+                        alt={`image-${index}`}
+                        width={50}
+                        height={50}
+                        className="w-14 object-cover"
+                      />
+                    ))}
+                  </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#154e4a] transition-colors duration-300">
                     {category.title}
                   </h3>
@@ -819,61 +754,6 @@ export default function Page() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section id="process" className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-slide-up">
-            <PremiumBadge className="mb-6">{t('process')}</PremiumBadge>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              {t('oddiy 4 qadam')}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('process-desc')}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div
-                key={index}
-                className="text-center space-y-6 relative group animate-fade-scale"
-                style={{ animationDelay: `${index * 150 + 300}ms` }}
-              >
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-r from-[#154e4a] to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/25 relative overflow-hidden">
-                    <step.icon className="w-10 h-10 text-white relative z-10" />
-
-                    {/* Rotating Border */}
-                    <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-spin"></div>
-
-                    {/* Pulse Effect */}
-                    <div className="absolute inset-0 rounded-full bg-white/20 animate-pulse"></div>
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-xs font-bold text-white">
-                      {step.step}
-                    </span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 group-hover:text-emerald-700 transition-colors duration-300">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600">{step.desc}</p>
-
-                {index < 3 && (
-                  <div className="hidden md:block absolute top-10 left-full w-full">
-                    <div className="flex items-center justify-center">
-                      <ArrowRight className="w-6 h-6 text-emerald-500 animate-pulse" />
-                      <div className="flex-1 h-0.5 bg-gradient-to-r from-emerald-500 to-green-500 ml-2"></div>
-                    </div>
-                  </div>
-                )}
-              </div>
             ))}
           </div>
         </div>
@@ -1132,7 +1012,7 @@ export default function Page() {
                         {faq.question}
                       </h3>
                       <p className="text-sm text-gray-500">
-                        Javobni ko'rish uchun bosing
+                        {t("Javobni ko'rish uchun bosing")}
                       </p>
                     </div>
 
@@ -1180,20 +1060,21 @@ export default function Page() {
                 </h3>
                 <p className="text-gray-600 mb-6">{t('faq-desc-2')}</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="tel:+998901234567"
+                  <Link
+                    href="tel:+998950533333"
                     className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-700 text-white rounded-full font-semibold hover:from-emerald-700 hover:to-green-800 transition-all duration-300 shadow-lg shadow-emerald-500/25 group"
                   >
                     <Phone className="mr-2 w-4 h-4 group-hover:animate-bounce" />
                     {t("Qo'ng'iroq qiling")}
-                  </a>
-                  <a
+                  </Link>
+                  <Link
+                    target="_blank"
                     href="https://t.me/prodotti_uz"
                     className="inline-flex items-center justify-center px-6 py-3 bg-white text-emerald-700 border-2 border-emerald-200 rounded-full font-semibold hover:bg-emerald-50 transition-all duration-300 group"
                   >
-                    <Mail className="mr-2 w-4 h-4 group-hover:animate-bounce" />
+                    <FaTelegramPlane className="mr-2 w-4 h-4 group-hover:animate-bounce" />
                     {t('Telegram orqali yozing')}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

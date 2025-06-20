@@ -1,16 +1,9 @@
-import {
-  Clock,
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
-  Twitter,
-} from 'lucide-react'
+import { Clock, Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import icon from '../../../public/images/image.png'
+import MapComponent from '../map-component'
 
 const Footer = () => {
   const t = useTranslations()
@@ -18,11 +11,11 @@ const Footer = () => {
   return (
     <footer
       id="contact"
-      className="bg-gradient-to-br from-gray-900 to-emerald-900 text-white py-20 relative overflow-hidden"
+      className="bg-gradient-to-br from-gray-900 to-emerald-900 text-white pt-20 pb-10 relative overflow-hidden"
     >
       <div className="container-cs">
-        <div className="grid md:grid-cols-5 gap-8 mb-12">
-          <div className="md:col-span-2 space-y-6">
+        <div className="grid md:grid-cols-3 gap-4 mb-12">
+          <div className="space-y-6">
             <Image
               src={icon}
               alt="PRODOTTI Boutique"
@@ -31,33 +24,20 @@ const Footer = () => {
               className="h-16 w-auto"
             />
             <p className="text-gray-400 leading-relaxed max-w-md">
-              Yevropa sifatini O'zbekistonga olib keluvchi ishonchli
-              hamkoringiz. Premium mahsulotlar, professional xizmat va mijozlar
-              mamnuniyati - bizning asosiy tamoyillarimiz.
+              {t('footer-desc')}
             </p>
             <div className="flex space-x-4">
               <Link
-                href="#"
+                href="https://www.instagram.com/prodotti.uz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-main transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-main transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-main transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </Link>
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-6 text-lg">{t('Havolalar')}</h4>
             <ul className="space-y-3 text-gray-400">
               <li>
@@ -101,28 +81,44 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div>
             <h4 className="font-bold mb-6 text-lg">{t('contact us')}</h4>
             <div className="space-y-4 text-gray-400">
+              <Link
+                href="tel:+998950533333"
+                className="flex items-center space-x-3"
+              >
+                <div className="">
+                  <Phone className="w-5 h-5 text-stone-300" />
+                </div>
+                <span>+998 95 053 33 33</span>
+              </Link>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-stone-300" />
-                <span>+998 90 123 45 67</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-stone-300" />
+                <div className="">
+                  <Mail className="w-5 h-5 text-stone-300" />
+                </div>
                 <span>info@prodotti.uz</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-stone-300" />
-                <span>Toshkent, O'zbekiston</span>
+                <div className="">
+                  <MapPin className="w-5 h-5 text-stone-300" />
+                </div>
+                <span>{t("O'zbekiston, Toshkent, Oloy bozori")}</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Clock className="w-5 h-5 text-stone-300" />
-                <span>Dush-Juma: 9:00-18:00</span>
+                <div className="">
+                  <Clock className="w-5 h-5 text-stone-300" />
+                </div>
+                <span>
+                  {t('Dushanba')}-{t('Yakshanba')}: 08:00-19:00
+                </span>
               </div>
             </div>
+          </div>
+          <div className="">
+            <MapComponent />
           </div>
         </div>
 

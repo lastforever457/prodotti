@@ -731,7 +731,7 @@ export default function Page() {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <div className="flex justify-start items-center gap-1 flex-wrap">
+                  <div className="flex justify-start items-center gap-2 flex-wrap">
                     {category?.images?.map((image, index) => (
                       <Image
                         key={index}
@@ -739,7 +739,7 @@ export default function Page() {
                         alt={`image-${index}`}
                         width={50}
                         height={50}
-                        className="w-14 object-cover"
+                        className="w-18 object-cover"
                       />
                     ))}
                   </div>

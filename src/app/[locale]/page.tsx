@@ -211,8 +211,15 @@ export default function Page() {
         gradient: 'from-green-600 to-emerald-700',
       },
       {
-        title: 'Shirinliklar',
+        title: t('Shirinliklar'),
         desc: 'Rolex, Omega, TAG Heuer',
+        prodImages: [
+          '/images/products/fabbri1.png',
+          '/images/products/fabbri2.png',
+          '/images/products/fabbri3.png',
+          '/images/products/fabbri4.png',
+          '/images/products/fabbri5.png',
+        ],
         images: [fabbri],
         badge: t('Lyuks'),
         gradient: 'from-teal-600 to-emerald-700',
@@ -782,7 +789,7 @@ export default function Page() {
                   </div>
                 </div>
                 <CardContent className="px-0">
-                  <div className="flex justify-start items-center gap-2 flex-wrap">
+                  <div className="flex justify-start items-center gap-2 w-full overflow-x-auto">
                     {category?.images?.map((image, index) => (
                       <Image
                         key={index}

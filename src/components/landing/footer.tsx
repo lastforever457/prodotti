@@ -111,9 +111,7 @@ const Footer = () => {
                 <div className="">
                   <Clock className="w-5 h-5 text-stone-300" />
                 </div>
-                <span>
-                  {t('Dushanba')}-{t('Yakshanba')}: 08:00-19:00
-                </span>
+                <span>{t('har kuni')}: 08:00-19:00</span>
               </div>
             </div>
           </div>

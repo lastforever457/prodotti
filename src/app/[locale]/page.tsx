@@ -4,7 +4,6 @@ import type React from 'react'
 
 import Footer from '@/components/landing/footer'
 import PremiumBadge from '@/components/landing/premium-badge'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import ChangeLanguage from '@/components/widgets/change-language'
@@ -30,10 +29,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { FaTelegramPlane } from 'react-icons/fa'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import fabbri from '../../../public/images/fabbri.png'
 import farchioni from '../../../public/images/farchioni.png'
 import granoro from '../../../public/images/granoro.png'
 import italcarciofi from '../../../public/images/italcarciofi.png'
+import italcarciofi2 from '../../../public/images/products/006A7431.jpg'
+import granoro1 from '../../../public/images/products/granoro1.png'
+import granoro2 from '../../../public/images/products/granoro2.png'
+import granoro3 from '../../../public/images/products/granoro3.png'
 import street from '../../../public/images/street.png'
 // Animated Counter Component
 const AnimatedCounter = ({
@@ -183,7 +191,7 @@ export default function Page() {
       {
         title: t('Italya mahsulotlari'),
         desc: 'Italcarciofi, Granoro, Farchioni, FABBRI',
-        image: '/images/placeholder.png',
+        prodImages: [italcarciofi2, granoro1, granoro2, granoro3],
         badge: t('Yangi kolleksiya'),
         gradient: 'from-emerald-600 to-green-700',
         images: [italcarciofi, granoro, farchioni, fabbri],
@@ -707,30 +715,43 @@ export default function Page() {
             {categories.map((category, index) => (
               <Card
                 key={index}
-                className="border-0 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 cursor-pointer group overflow-hidden bg-white/80 backdrop-blur-sm animate-fade-scale"
+                className="border-0 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 cursor-pointer group overflow-hidden bg-white/80 backdrop-blur-sm animate-fade-scale p-5"
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
                 <div className="relative overflow-hidden">
-                  <Image
-                    src={category.image || '/images/placeholder.png'}
-                    alt={category.title}
-                    width={350}
-                    height={300}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${category.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  ></div>
-                  <Badge className="absolute top-4 left-4 bg-gradient-to-r from-[#154e4a] to-green-600 text-white border-0 shadow-lg">
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    pagination={{ clickable: true }}
+                    loop={true}
+                    navigation={true}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                  >
+                    {category?.prodImages?.map((image, index) => (
+                      <SwiperSlide key={index}>
+                        <Image
+                          src={image}
+                          alt={`image-${index}`}
+                          width={500}
+                          height={500}
+                          className="h-[300px] w-full object-cover rounded-lg"
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+
+                  {/* <Badge className="absolute top-4 left-4 bg-gradient-to-r from-[#154e4a] to-green-600 text-white border-0 shadow-lg">
                     {category.badge}
-                  </Badge>
+                  </Badge> */}
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent>
                   <div className="flex justify-start items-center gap-2 flex-wrap">
                     {category?.images?.map((image, index) => (
                       <Image

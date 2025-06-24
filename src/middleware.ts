@@ -1,8 +1,21 @@
-import createMiddleware from 'next-intl/middleware'
-import { routing } from './i18n/routing'
+import { NextRequest, NextResponse } from 'next/server'
 
-export default createMiddleware(routing)
+const PUBLIC_FILE = /\.(.*)$/
 
-export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/favicon.ico') ||
+    PUBLIC_FILE.test(pathname)
+  ) {
+    return
+  }
+
+  // If no locale, redirect to default
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/rus', request.url))
+  }
 }

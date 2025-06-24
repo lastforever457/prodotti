@@ -1,9 +1,12 @@
+'use client'
+
 import { Clock, Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import icon from '../../../public/images/image.png'
-import MapComponent from '../map-component'
+const MapComponent = dynamic(() => import('../map-component'), { ssr: false })
 
 const Footer = () => {
   const t = useTranslations()
@@ -37,52 +40,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* <div>
-            <h4 className="font-bold mb-6 text-lg">{t('Havolalar')}</h4>
-            <ul className="space-y-3 text-gray-400">
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-stone-300 transition-colors"
-                >
-                  {t('about us')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-stone-300 transition-colors"
-                >
-                  {t('products')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-stone-300 transition-colors"
-                >
-                  {t('process')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-stone-300 transition-colors"
-                >
-                  {t('comments')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="hover:text-stone-300 transition-colors"
-                >
-                  {t('faq')}
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-
           <div>
             <h4 className="font-bold mb-6 text-lg">{t('contact us')}</h4>
             <div className="space-y-4 text-gray-400">
@@ -115,7 +72,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="h-[300px]">
             <MapComponent />
           </div>
         </div>

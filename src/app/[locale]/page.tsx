@@ -751,7 +751,7 @@ export default function Page() {
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
-                <CardContent>
+                <CardContent className="px-0">
                   <div className="flex justify-start items-center gap-2 flex-wrap">
                     {category?.images?.map((image, index) => (
                       <Image

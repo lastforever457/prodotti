@@ -1,0 +1,18 @@
+.custom-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #d1d5db;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.custom-bullet:hover {
+  background-color: #9ca3af;
+  transform: scale(1.2);
+}
+.swiper-pagination-bullet-active.custom-bullet {
+  background-color: #374151;
+  width: 24px;
+  border-radius: 12px;
+}

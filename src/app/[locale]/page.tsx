@@ -12,6 +12,8 @@ import {
   Award,
   CheckCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Globe,
   Heart,
@@ -40,6 +42,7 @@ import farchioni from '../../../public/images/farchioni.png'
 import granoro from '../../../public/images/granoro.png'
 import italcarciofi from '../../../public/images/italcarciofi.png'
 import street from '../../../public/images/street.png'
+import '../../components/landing/swiper.css'
 // Animated Counter Component
 const AnimatedCounter = ({
   end,
@@ -189,7 +192,7 @@ export default function Page() {
         title: t('Italya mahsulotlari'),
         desc: 'Italcarciofi, Granoro, Farchioni',
         prodImages: [
-          '/images/products/006A7431.jpg',
+          '/images/products/006A7431.png',
           '/images/products/granoro1.png',
           '/images/products/granoro2.png',
           '/images/products/granoro3.png',
@@ -716,34 +719,58 @@ export default function Page() {
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
                 <div className="relative overflow-hidden h-[300px]">
-                  <Swiper
-                    modules={[Navigation, Pagination]}
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    pagination={{ clickable: true }}
-                    loop={true}
-                    navigation={true}
-                    height={300}
-                    className="h-[300px]"
-                  >
-                    {category?.prodImages?.map((image, index) => (
-                      <SwiperSlide key={index} className="h-[300px]">
-                        <AntdImage
-                          src={image}
-                          alt={`image-${index}`}
-                          height={300}
-                          style={{
-                            objectFit: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundSize: 'cover',
-                            width: '100% !important',
-                            height: '300px !important',
-                          }}
-                          className="h-[300px] w-full object-cover bg-center bg-cover rounded-lg"
-                        />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+                  <div className="relative">
+                    <Swiper
+                      modules={[Navigation, Pagination]}
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      loop={true}
+                      pagination={{
+                        el: '.custom-swiper-pagination',
+                        clickable: true,
+                        renderBullet: (index, className) => {
+                          return `<span class="${className} custom-bullet"></span>`
+                        },
+                      }}
+                      navigation={{
+                        nextEl: '.custom-swiper-button-next',
+                        prevEl: '.custom-swiper-button-prev',
+                      }}
+                      className="h-[300px] rounded-lg overflow-hidden"
+                    >
+                      {category?.prodImages?.map((image, index) => (
+                        <SwiperSlide key={index} className="h-[300px]">
+                          <AntdImage
+                            src={image || '/placeholder.svg'}
+                            alt={`Slide ${index + 1}`}
+                            imgStyle={{
+                              width: '100% !important',
+                              height: '300px !important',
+                              objectFit: 'contain !important',
+                              backgroundSize: 'contain !important',
+                              backgroundPosition: 'center !important',
+                              backgroundRepeat: 'no-repeat !important',
+                            }}
+                            height={300}
+                            className="h-full object-contain"
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+
+                    {/* Custom left arrow */}
+                    <div className="custom-swiper-button-prev absolute top-1/2 left-2 z-50 -translate-y-1/2 cursor-pointer text-main rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110">
+                      <ChevronLeft size={20} />
+                    </div>
+
+                    {/* Custom right arrow */}
+                    <div className="custom-swiper-button-next absolute top-1/2 right-2 z-50 -translate-y-1/2 cursor-pointer text-main rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110">
+                      <ChevronRight size={20} />
+                    </div>
+
+                    {/* Custom pagination */}
+                    <div className="custom-swiper-pagination flex justify-center gap-2 mt-4" />
+                  </div>
 
                   {/* <Badge className="absolute top-4 left-4 bg-gradient-to-r from-[#154e4a] to-green-600 text-white border-0 shadow-lg">
                     {category.badge}

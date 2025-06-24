@@ -27,12 +27,14 @@ import {
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { FaTelegramPlane } from 'react-icons/fa'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import aroyD from '../../../public/images/aroy-d.png'
+import aziza from '../../../public/images/aziza.jpg'
+import bobur from '../../../public/images/bobur.jpg'
 import chaokoh from '../../../public/images/chaokoh.jpg'
 import fabbri from '../../../public/images/fabbri.png'
 import falcone from '../../../public/images/falcone.png'
@@ -41,73 +43,14 @@ import granoro from '../../../public/images/granoro.png'
 import gullon from '../../../public/images/gullon.png'
 import italcarciofi from '../../../public/images/italcarciofi.png'
 import maePloy from '../../../public/images/mae-ploy.jpg'
+import malika from '../../../public/images/malika.jpg'
 import muraca from '../../../public/images/muraca.png'
+import nestiDante from '../../../public/images/nesti-dante.png'
+import ownerImage from '../../../public/images/owner.png'
 import schogetten from '../../../public/images/schogetten.jpg'
 import street from '../../../public/images/street.png'
 import '../../components/landing/swiper.css'
-// Animated Counter Component
-const AnimatedCounter = ({
-  end,
-  duration = 2000,
-  suffix = '',
-}: {
-  end: string
-  duration?: number
-  suffix?: string
-}) => {
-  const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isVisible) return
-
-    const numericEnd = Number.parseInt(end.replace(/[^\d]/g, ''))
-    let startTime: number
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-
-      setCount(Math.floor(progress * numericEnd))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [isVisible, end, duration])
-
-  return (
-    <div
-      ref={ref}
-      className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent"
-    >
-      {count.toLocaleString()}
-      {suffix}
-    </div>
-  )
-}
-
-// Floating Animation Component
 const FloatingElement = ({
   children,
   delay = 0,
@@ -128,7 +71,10 @@ const FloatingElement = ({
 
 export default function Page() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+  const [previewIndex, setPreviewIndex] = useState(0)
+  const [previewScale, setPreviewScale] = useState(1)
+  const [previewRotation, setPreviewRotation] = useState(0)
 
   const t = useTranslations()
 
@@ -154,14 +100,6 @@ export default function Page() {
         bgColor: 'bg-emerald-50',
         delay: '0',
       },
-      // {
-      //   icon: Truck,
-      //   title: t('Tez yetkazish'),
-      //   desc: t('3-7 kun ichida'),
-      //   color: 'from-green-500 to-emerald-600',
-      //   bgColor: 'bg-green-50',
-      //   delay: '100',
-      // },
       {
         icon: Award,
         title: t('Premium sifat'),
@@ -170,14 +108,6 @@ export default function Page() {
         bgColor: 'bg-teal-50',
         delay: '200',
       },
-      // {
-      //   icon: Users,
-      //   title: t("24/7 qo'llab-quvvatlash"),
-      //   desc: t('Har doim yordamda'),
-      //   color: 'from-emerald-600 to-green-700',
-      //   bgColor: 'bg-emerald-50',
-      //   delay: '300',
-      // },
     ],
     [t]
   )
@@ -194,6 +124,9 @@ export default function Page() {
           '/images/products/granoro3.png',
           '/images/products/farchioni1.png',
           '/images/products/farchioni2.png',
+          '/images/products/muraca1.png',
+          '/images/products/muraca2.png',
+          '/images/products/muraca3.png',
         ],
         gradient: 'from-emerald-600 to-green-700',
         images: [italcarciofi, granoro, farchioni, muraca],
@@ -214,7 +147,6 @@ export default function Page() {
           '/images/products/chaokoh2.png',
           '/images/products/mae-ploy.png',
         ],
-        image: '/images/placeholder.png',
         gradient: 'from-green-600 to-emerald-700',
         images: [aroyD, chaokoh, maePloy],
       },
@@ -240,16 +172,23 @@ export default function Page() {
           '/images/products/gullon3.png',
         ],
         images: [fabbri, falcone, schogetten, gullon],
-        badge: t('Lyuks'),
         gradient: 'from-teal-600 to-emerald-700',
       },
 
       {
         title: t('kosmetikalar'),
-        desc: 'IKEA, H&M Home, Nordic',
-        image: '/images/placeholder.png',
-        badge: t('Bestseller'),
+        desc: 'Nesti Dante',
+        prodImages: [
+          '/images/products/nesti1.png',
+          '/images/products/nesti2.png',
+          '/images/products/nesti3.png',
+          '/images/products/nesti4.png',
+          '/images/products/nesti5.png',
+          '/images/products/nesti6.png',
+          '/images/products/nesti7.png',
+        ],
         gradient: 'from-green-700 to-emerald-800',
+        images: [nestiDante],
       },
     ],
     [t]
@@ -544,11 +483,6 @@ export default function Page() {
                   </div>
                 ))}
               </div>
-
-              {/* <Button className="bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white px-8 py-3 rounded-full shadow-lg shadow-emerald-500/25 group">
-                Batafsil ma'lumot
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button> */}
             </div>
 
             <div className="relative animate-slide-right">
@@ -566,22 +500,6 @@ export default function Page() {
                 {/* Overlay Pattern */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              {/*
-              <FloatingElement delay={1}>
-                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-emerald-100 group hover:shadow-2xl transition-shadow duration-300">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-800">15+ davlat</div>
-                      <div className="text-sm text-gray-600">
-                        Hamkorlik qilamiz
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </FloatingElement> */}
 
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
@@ -714,14 +632,19 @@ export default function Page() {
                   }ms both`,
                 }}
               >
-                <div className="relative p-5">
+                <div className=" p-5">
                   <EmblaProducts
                     images={category.prodImages}
                     className="mb-4"
+                    isPreviewOpen={isPreviewOpen}
+                    previewIndex={previewIndex}
+                    previewScale={previewScale}
+                    previewRotation={previewRotation}
+                    setIsPreviewOpen={setIsPreviewOpen}
+                    setPreviewIndex={setPreviewIndex}
+                    setPreviewScale={setPreviewScale}
+                    setPreviewRotation={setPreviewRotation}
                   />
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-lg" />
                 </div>
 
                 <CardContent className="px-5 pb-5">
@@ -802,25 +725,22 @@ export default function Page() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Dilnoza Karimova',
-                role: 'Biznes ayol',
-                text: 'PRODOTTI Boutique orqali Italiyadan olib kelgan sumkam haqiqatan ham ajoyib! Sifati va dizayni mukammal.',
+                name: t('Dilnoza Karimova'),
+                text: t('testimonials-1'),
                 rating: 5,
-                image: '/images/placeholder.png',
+                image: aziza,
               },
               {
-                name: 'Bobur Rahimov',
-                role: 'Arxitektor',
-                text: "Shveytsariya soatini buyurtma qilgandim. Yetkazib berish tez bo'ldi, mahsulot original va kafolat bilan keldi.",
+                name: t('Bobur Rahimov'),
+                text: t('testimonials-3'),
                 rating: 5,
-                image: '/images/placeholder.png',
+                image: bobur,
               },
               {
-                name: 'Malika Tosheva',
-                role: 'Dizayner',
-                text: 'Fransuz kosmetikasi uchun eng ishonchli manzil. Har doim original mahsulotlar va professional xizmat.',
+                name: t('Malika Tosheva'),
+                text: t('testimonials-2'),
                 rating: 5,
-                image: '/images/placeholder.png',
+                image: malika,
               },
             ].map((testimonial, index) => (
               <Card
@@ -828,44 +748,42 @@ export default function Page() {
                 className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300 group animate-fade-scale"
                 style={{ animationDelay: `${index * 150 + 400}ms` }}
               >
-                <CardContent className="p-8 relative">
-                  {/* Quote Icon with Animation */}
-                  <div className="relative mb-4">
-                    <Quote className="w-8 h-8 text-yellow-300 group-hover:scale-110 transition-transform duration-300" />
-                    <div className="absolute -inset-2 bg-yellow-300/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-
-                  <p className="text-lg mb-6 leading-relaxed group-hover:text-white transition-colors duration-300">
-                    "{testimonial.text}"
-                  </p>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="relative">
-                      <Image
-                        src={testimonial.image || '/images/placeholder.png'}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"
-                      />
-                      <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <CardContent className="p-8 relative flex flex-col justify-between items-start h-full">
+                  <div>
+                    <div className="relative mb-4">
+                      <Quote className="w-8 h-8 text-yellow-300 group-hover:scale-110 transition-transform duration-300" />
+                      <div className="absolute -inset-2 bg-yellow-300/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div>
-                      <div className="font-bold">{testimonial.name}</div>
-                      <div className="text-emerald-200 text-sm">
-                        {testimonial.role}
+
+                    <p className="text-lg mb-6 leading-relaxed group-hover:text-white transition-colors duration-300">
+                      "{testimonial.text}"
+                    </p>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="flex items-center space-x-4">
+                      <div className="relative">
+                        <Image
+                          src={testimonial.image || '/images/placeholder.png'}
+                          alt={testimonial.name}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"
+                        />
+                      </div>
+                      <div>
+                        <div className="font-bold">{testimonial.name}</div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="flex mt-4 space-x-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-yellow-300 text-yellow-300 group-hover:scale-110 transition-transform duration-300"
-                        style={{ transitionDelay: `${i * 50}ms` }}
-                      />
-                    ))}
+                    <div className="flex mt-4 space-x-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-yellow-300 text-yellow-300 group-hover:scale-110 transition-transform duration-300"
+                          style={{ transitionDelay: `${i * 50}ms` }}
+                        />
+                      ))}
+                    </div>
                   </div>
 
                   {/* Decorative Corner */}
@@ -882,84 +800,39 @@ export default function Page() {
 
       {/* Stats Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-emerald-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <FloatingElement delay={0}>
-            <div className="absolute top-10 left-20 w-24 h-24 bg-emerald-200/20 rounded-full blur-xl"></div>
-          </FloatingElement>
-          <FloatingElement delay={2}>
-            <div className="absolute bottom-10 right-20 w-32 h-32 bg-green-200/20 rounded-full blur-xl"></div>
-          </FloatingElement>
+        {/* Subtle background decoration */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-emerald-100 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-emerald-50 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              {t('Bizning yutuqlarimiz')}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t('achievements-desc')}
-            </p>
-          </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Section header */}
+            <div className="flex justify-center items-center gap-2">
+              <PremiumBadge className="mb-6">{t('founder')}</PremiumBadge>
+            </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="group text-center space-y-6 p-6 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 animate-fade-scale"
-                style={{
-                  animationDelay: `${Number.parseInt(stat.delay) + 300}ms`,
-                }}
-              >
-                <div className="relative">
-                  <div
-                    className={`w-20 h-20 ${stat.bgColor} rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-all duration-300 border border-emerald-100 relative overflow-hidden`}
-                  >
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`}
-                    ></div>
-                    <stat.icon className="w-10 h-10 text-emerald-600 group-hover:text-white transition-colors duration-300 relative z-10" />
-
-                    {/* Rotating Ring */}
-                    <div className="absolute inset-0 rounded-2xl border-2 border-emerald-200 group-hover:border-transparent transition-colors duration-300">
-                      <div className="absolute inset-0 rounded-2xl border-2 border-emerald-400 opacity-0 group-hover:opacity-100 animate-spin transition-opacity duration-300"></div>
-                    </div>
-                  </div>
-
-                  {/* Floating Particles */}
-                  <div className="absolute -top-2 -right-2 w-3 h-3 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-bounce"></div>
-                  <div
-                    className="absolute -bottom-1 -left-1 w-2 h-2 bg-emerald-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-bounce"
-                    style={{ animationDelay: '0.2s' }}
-                  ></div>
-                </div>
-
-                <div className="space-y-2">
-                  <AnimatedCounter
-                    end={stat.number}
-                    suffix={stat.number.includes('.') ? '/5' : '+'}
-                  />
-                  <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full bg-gradient-to-r ${stat.color} transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out`}
-                      style={{
-                        transitionDelay: `${
-                          Number.parseInt(stat.delay) + 200
-                        }ms`,
-                      }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="text-gray-600 font-medium group-hover:text-gray-800 transition-colors duration-300">
-                  {stat.label}
-                </div>
+            <div className="flex flex-col justify-center items-center gap-10">
+              <div className="relative">
+                {/* Glow effect behind image */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-emerald-200 to-green-200 rounded-full blur-xl opacity-50"></div>
+                <Image
+                  src={ownerImage || '/placeholder.svg'}
+                  alt="Our owner"
+                  width={500}
+                  height={500}
+                  className="size-52 bg-emerald-100 rounded-full border-4 border-emerald-300 relative z-10 shadow-2xl"
+                />
               </div>
-            ))}
-          </div>
 
-          {/* Bottom Decorative Line */}
-          <div className="mt-16 flex justify-center">
-            <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 rounded-full animate-pulse"></div>
+              <div className="text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-2">
+                  {t('Toxir Karimov')}
+                </h2>
+                <div className="mt-10 w-24 h-1 bg-gradient-to-r from-emerald-400 to-green-400 mx-auto rounded-full"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

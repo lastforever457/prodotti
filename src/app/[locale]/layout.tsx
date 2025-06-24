@@ -9,39 +9,89 @@ export const generateMetadata = async ({
   params: Promise<{ locale: string }>
 }) => {
   const { locale } = await params
+
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
 
   const t = await getTranslations({ locale })
 
+  const title = t('head-title')
+  const description = t('head-desc')
+  const imageUrl = '/images/image.png'
+
   return {
-    title: t('head-title'),
-    description: t('head-desc'),
-    metadata: {
-      'og:type': 'website',
-      'og:title': t('head-title'),
-      'og:description': t('head-desc'),
-      'twitter:card': 'summary',
-      'twitter:title': t('head-title'),
-      'twitter:description': t('head-desc'),
-      'twitter:creator': '@prodotti',
-      'twitter:image': {
-        url: '/images/image.png',
-        width: 1200,
-        height: 630,
-        alt: t('head-title'),
+    title,
+    description,
+    metadataBase: new URL('https://prodotti.uz'), // saytingiz domenini bu yerga yozing
+    alternates: {
+      canonical: '/',
+      languages: {
+        uz: '/uzb',
+        ru: '/rus',
+        en: '/eng',
       },
-      'og:image': {
-        url: '/images/image.png',
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-        alt: t('head-title'),
-      },
-      'og:site_name': 'PRODOTTI',
-      'og:locale': locale,
     },
+    openGraph: {
+      type: 'website',
+      url: '/',
+      title,
+      description,
+      siteName: 'PRODOTTI',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      creator: '@prodotti',
+      images: [imageUrl],
+    },
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        maxSnippet: -1,
+        maxImagePreview: 'large',
+        maxVideoPreview: -1,
+      },
+    },
+    // verification: {
+    //   google: 'GOOGLE_VERIFICATION_CODE', // Google Search Console’dan olingan kod
+    //   yandex: 'YANDEX_VERIFICATION_CODE',
+    // },
+    keywords: [
+      'PRODOTTI',
+      'onlayn doʻkon',
+      'internet magazin',
+      'sifatli mahsulotlar',
+      'premium market',
+      'prodotti.uz',
+    ],
+    category: 'shopping',
+    authors: [
+      {
+        name: 'Toxir Karimov',
+        url: 'https://www.prodotti.uz',
+      },
+    ],
+    creator: 'Toxir Karimov',
+    publisher: 'Toxir Karimov',
   }
 }
 

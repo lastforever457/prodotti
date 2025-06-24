@@ -127,6 +127,10 @@
     display: none;
   }
 
+  .product-logo::-webkit-scrollbar {
+    display: none;
+  }
+
   .container-cs {
     @apply max-w-7xl mx-auto px-4;
   }

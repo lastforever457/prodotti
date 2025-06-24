@@ -2,18 +2,16 @@
 
 import type React from 'react'
 
+import EmblaProducts from '@/components/landing/embla-products'
 import Footer from '@/components/landing/footer'
 import PremiumBadge from '@/components/landing/premium-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import ChangeLanguage from '@/components/widgets/change-language'
-import { Image as AntdImage } from 'antd'
 import {
   Award,
   CheckCircle,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   Globe,
   Heart,
@@ -23,7 +21,6 @@ import {
   Quote,
   Shield,
   Star,
-  Truck,
   Users,
   X,
 } from 'lucide-react'
@@ -35,12 +32,17 @@ import { FaTelegramPlane } from 'react-icons/fa'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import aroyD from '../../../public/images/aroy-d.png'
+import chaokoh from '../../../public/images/chaokoh.jpg'
 import fabbri from '../../../public/images/fabbri.png'
+import falcone from '../../../public/images/falcone.png'
 import farchioni from '../../../public/images/farchioni.png'
 import granoro from '../../../public/images/granoro.png'
+import gullon from '../../../public/images/gullon.png'
 import italcarciofi from '../../../public/images/italcarciofi.png'
+import maePloy from '../../../public/images/mae-ploy.jpg'
+import muraca from '../../../public/images/muraca.png'
+import schogetten from '../../../public/images/schogetten.jpg'
 import street from '../../../public/images/street.png'
 import '../../components/landing/swiper.css'
 // Animated Counter Component
@@ -130,12 +132,6 @@ export default function Page() {
 
   const t = useTranslations()
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -199,87 +195,61 @@ export default function Page() {
           '/images/products/farchioni1.png',
           '/images/products/farchioni2.png',
         ],
-        badge: t('Yangi kolleksiya'),
         gradient: 'from-emerald-600 to-green-700',
-        images: [italcarciofi, granoro, farchioni],
+        images: [italcarciofi, granoro, farchioni, muraca],
       },
       {
-        title: 'Panasia',
+        title: t('Panasia tovarlari'),
         desc: 'Chaokoh, Aroy-D, Mae Ploy',
         prodImages: [
-          '/images/products/chaokoh1.png',
-          '/images/products/chaokoh2.png',
+          '/images/products/aroy-d9.png',
           '/images/products/aroy-d1.png',
           '/images/products/aroy-d2.png',
-          '/images/products/aroy-d3.png',
           '/images/products/aroy-d4.png',
           '/images/products/aroy-d5.png',
           '/images/products/aroy-d6.png',
           '/images/products/aroy-d7.png',
           '/images/products/aroy-d8.png',
-          '/images/products/mae-ploy1.png',
+          '/images/products/chaokoh1.png',
+          '/images/products/chaokoh2.png',
+          '/images/products/mae-ploy.png',
         ],
         image: '/images/placeholder.png',
-        badge: t('Bestseller'),
         gradient: 'from-green-600 to-emerald-700',
+        images: [aroyD, chaokoh, maePloy],
       },
       {
         title: t('Shirinliklar'),
-        desc: 'Rolex, Omega, TAG Heuer',
+        desc: 'FABBRI, Falcone, Schogetten, Gullon',
         prodImages: [
+          '/images/products/fabbri5.png',
+          '/images/products/fabbri4.png',
+          '/images/products/fabbri3.png',
           '/images/products/fabbri1.png',
           '/images/products/fabbri2.png',
-          '/images/products/fabbri3.png',
-          '/images/products/fabbri4.png',
-          '/images/products/fabbri5.png',
+          '/images/products/amaretti1.png',
+          '/images/products/amaretti2.png',
+          '/images/products/cantucci1.png',
+          '/images/products/cantucci2.png',
+          '/images/products/schogetten1.png',
+          '/images/products/schogetten2.png',
+          '/images/products/schogetten3.png',
+          '/images/products/schogetten4.png',
+          '/images/products/gullon1.png',
+          '/images/products/gullon2.png',
+          '/images/products/gullon3.png',
         ],
-        images: [fabbri],
+        images: [fabbri, falcone, schogetten, gullon],
         badge: t('Lyuks'),
         gradient: 'from-teal-600 to-emerald-700',
       },
+
       {
-        title: 'Shakarsiz shirinliklar',
-        desc: 'BMW, Mercedes, Audi',
-        image: '/images/placeholder.png',
-        badge: t('Premium'),
-        gradient: 'from-emerald-700 to-green-800',
-      },
-      {
-        title: 'Kosmetika',
+        title: t('kosmetikalar'),
         desc: 'IKEA, H&M Home, Nordic',
         image: '/images/placeholder.png',
         badge: t('Bestseller'),
         gradient: 'from-green-700 to-emerald-800',
-      },
-    ],
-    [t]
-  )
-
-  const processSteps = useMemo(
-    () => [
-      {
-        step: '01',
-        title: t('Mahsulotni tanlang'),
-        desc: t('Katalogdan yoqgan mahsulotingizni tanlang'),
-        icon: Package,
-      },
-      {
-        step: '02',
-        title: t('Buyurtma bering'),
-        desc: t("Telegram yoki telefon orqali bog'laning"),
-        icon: Phone,
-      },
-      {
-        step: '03',
-        title: t("To'lovni amalga oshiring"),
-        desc: t("Qulay usulda to'lov qiling"),
-        icon: CheckCircle,
-      },
-      {
-        step: '04',
-        title: t('Mahsulotni oling'),
-        desc: t('3-7 kun ichida yetkazib beramiz'),
-        icon: Truck,
       },
     ],
     [t]
@@ -449,6 +419,7 @@ export default function Page() {
               draggable={false}
               src="/images/image.png"
               alt="PRODOTTI Boutique"
+              priority
               width={150}
               height={75}
               className="size-12 rounded-lg w-auto"
@@ -585,6 +556,7 @@ export default function Page() {
                 <Image
                   src={street}
                   alt="About Us"
+                  priority
                   width={500}
                   height={600}
                   className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
@@ -732,96 +704,51 @@ export default function Page() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
+            {categories.map((category: Record<string, any>, index: number) => (
               <Card
-                key={index}
-                className="border-0 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 cursor-pointer group overflow-hidden bg-white/80 backdrop-blur-sm animate-fade-scale p-5"
-                style={{ animationDelay: `${index * 100 + 200}ms` }}
+                key={index + 1}
+                className="border-0 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 cursor-pointer group overflow-hidden bg-white/80 backdrop-blur-sm"
+                style={{
+                  animation: `fadeInUp 0.6s ease-out ${
+                    index * 100 + 200
+                  }ms both`,
+                }}
               >
-                <div className="relative overflow-hidden h-[300px]">
-                  <div className="relative">
-                    <Swiper
-                      modules={[Navigation, Pagination]}
-                      spaceBetween={10}
-                      slidesPerView={1}
-                      loop={true}
-                      pagination={{
-                        el: '.custom-swiper-pagination',
-                        clickable: true,
-                        renderBullet: (index, className) => {
-                          return `<span class="${className} custom-bullet"></span>`
-                        },
-                      }}
-                      navigation={{
-                        nextEl: '.custom-swiper-button-next',
-                        prevEl: '.custom-swiper-button-prev',
-                      }}
-                      className="h-[300px] rounded-lg overflow-hidden"
-                    >
-                      {category?.prodImages?.map((image, index) => (
-                        <SwiperSlide key={index} className="h-[300px]">
-                          <AntdImage
-                            src={image || '/placeholder.svg'}
-                            alt={`Slide ${index + 1}`}
-                            imgStyle={{
-                              width: '100% !important',
-                              height: '300px !important',
-                              objectFit: 'contain !important',
-                              backgroundSize: 'contain !important',
-                              backgroundPosition: 'center !important',
-                              backgroundRepeat: 'no-repeat !important',
-                            }}
-                            height={300}
-                            className="h-full object-contain"
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-
-                    {/* Custom left arrow */}
-                    <div className="custom-swiper-button-prev absolute top-1/2 left-2 z-50 -translate-y-1/2 cursor-pointer text-main rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110">
-                      <ChevronLeft size={20} />
-                    </div>
-
-                    {/* Custom right arrow */}
-                    <div className="custom-swiper-button-next absolute top-1/2 right-2 z-50 -translate-y-1/2 cursor-pointer text-main rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110">
-                      <ChevronRight size={20} />
-                    </div>
-
-                    {/* Custom pagination */}
-                    <div className="custom-swiper-pagination flex justify-center gap-2 mt-4" />
-                  </div>
-
-                  {/* <Badge className="absolute top-4 left-4 bg-gradient-to-r from-[#154e4a] to-green-600 text-white border-0 shadow-lg">
-                    {category.badge}
-                  </Badge> */}
+                <div className="relative p-5">
+                  <EmblaProducts
+                    images={category.prodImages}
+                    className="mb-4"
+                  />
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-lg" />
                 </div>
-                <CardContent className="px-0">
-                  <div className="flex justify-start items-center gap-2 w-full overflow-x-auto">
-                    {category?.images?.map((image, index) => (
-                      <Image
-                        key={index}
-                        src={image}
-                        alt={`image-${index}`}
-                        width={50}
-                        height={50}
-                        className="w-18 object-cover"
-                      />
+
+                <CardContent className="px-5 pb-5">
+                  {/* Thumbnail Images */}
+                  <div className="product-logo flex justify-start h-20 items-start gap-2 w-full overflow-x-auto mb-4">
+                    {category?.images?.map((image: any, imgIndex: number) => (
+                      <div key={imgIndex} className="flex-shrink-0">
+                        <Image
+                          priority
+                          src={image || '/placeholder.svg'}
+                          alt={`thumbnail-${imgIndex}`}
+                          width={50}
+                          height={50}
+                          className="w-full max-w-20 max-h-16 min-h-10 h-full object-contain transition-colors duration-200"
+                        />
+                      </div>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#154e4a] transition-colors duration-300">
+
+                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
                     {category.title}
                   </h3>
-                  <p className="text-gray-600">{category.desc}</p>
+                  <p className="text-gray-600 mb-4">{category.desc}</p>
 
                   {/* Progress Bar */}
-                  <div className="mt-4 w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-emerald-500 to-green-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
+                  <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-emerald-500 to-green-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out" />
                   </div>
                 </CardContent>
               </Card>

@@ -1,18 +1,28 @@
-// // next-sitemap.config.js
-
-// /** @type {import('next-sitemap').IConfig} */
-// module.exports = {
-//   siteUrl: 'https://prodotti.uz', // ← o'zingizning domeningiz
-//   generateRobotsTxt: true, // robots.txt faylini ham generatsiya qiladi
-//   generateIndexSitemap: true, // agar ko‘p sitemaplar bo‘lsa, indeks yaratadi
-//   sitemapSize: 5000, // bitta sitemapda maksimal
-//   i18n: {
-//     locales: ['eng', 'uzb', 'rus'], // o'zingizning tillar
-//     defaultLocale: 'rus',
-//   },
-// }
+/** @type {import('next-sitemap').IConfig} */
+const siteUrl = 'https://prodotti.uz'
 
 module.exports = {
-  siteUrl: 'https://prodotti.uz',
-  generateRobotsTxt: true,
+  siteUrl,
+  generateRobotsTxt: true, // (optional)
+  changefreq: 'weekly',
+  priority: 0.7,
+  sitemapSize: 5000,
+  alternateRefs: [
+    {
+      href: `${siteUrl}/eng`,
+      hreflang: 'eng',
+    },
+    {
+      href: `${siteUrl}/uzb`,
+      hreflang: 'uzb',
+    },
+    {
+      href: `${siteUrl}/rus`,
+      hreflang: 'rus',
+    },
+  ],
+  i18n: {
+    locales: ['eng', 'uzb', 'rus'],
+    defaultLocale: 'eng',
+  },
 }

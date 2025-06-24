@@ -141,7 +141,6 @@ const ProductsList = () => {
                 alt={`thumbnail-${imgIndex}`}
                 width={50}
                 height={50}
-                unoptimized
                 className="w-full max-w-20 max-h-16 min-h-10 h-full object-contain transition-colors duration-200"
               />
             </div>

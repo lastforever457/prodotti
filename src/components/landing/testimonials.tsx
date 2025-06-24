@@ -83,7 +83,6 @@ const Testimonials = () => {
                         alt={testimonial.name}
                         width={48}
                         height={48}
-                        unoptimized
                         className="w-12 h-12 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors duration-300"
                       />
                     </div>

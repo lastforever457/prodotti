@@ -7,6 +7,7 @@ import PremiumBadge from '@/components/landing/premium-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import ChangeLanguage from '@/components/widgets/change-language'
+import { Image as AntdImage } from 'antd'
 import {
   Award,
   CheckCircle,
@@ -38,10 +39,6 @@ import fabbri from '../../../public/images/fabbri.png'
 import farchioni from '../../../public/images/farchioni.png'
 import granoro from '../../../public/images/granoro.png'
 import italcarciofi from '../../../public/images/italcarciofi.png'
-import italcarciofi2 from '../../../public/images/products/006A7431.jpg'
-import granoro1 from '../../../public/images/products/granoro1.png'
-import granoro2 from '../../../public/images/products/granoro2.png'
-import granoro3 from '../../../public/images/products/granoro3.png'
 import street from '../../../public/images/street.png'
 // Animated Counter Component
 const AnimatedCounter = ({
@@ -190,46 +187,46 @@ export default function Page() {
     () => [
       {
         title: t('Italya mahsulotlari'),
-        desc: 'Italcarciofi, Granoro, Farchioni, FABBRI',
-        prodImages: [italcarciofi2, granoro1, granoro2, granoro3],
+        desc: 'Italcarciofi, Granoro, Farchioni',
+        prodImages: [
+          '/images/products/006A7431.jpg',
+          '/images/products/granoro1.png',
+          '/images/products/granoro2.png',
+          '/images/products/granoro3.png',
+          '/images/products/farchioni1.png',
+          '/images/products/farchioni2.png',
+        ],
         badge: t('Yangi kolleksiya'),
         gradient: 'from-emerald-600 to-green-700',
-        images: [italcarciofi, granoro, farchioni, fabbri],
+        images: [italcarciofi, granoro, farchioni],
       },
       {
-        title: 'Fransuz kosmetikasi',
+        title: 'Panasia',
         desc: 'Chanel, Dior, Lancôme',
         image: '/images/placeholder.png',
         badge: t('Bestseller'),
         gradient: 'from-green-600 to-emerald-700',
       },
       {
-        title: 'Shveytsariya soatlari',
+        title: 'Shirinliklar',
         desc: 'Rolex, Omega, TAG Heuer',
-        image: '/images/placeholder.png',
+        images: [fabbri],
         badge: t('Lyuks'),
         gradient: 'from-teal-600 to-emerald-700',
       },
       {
-        title: 'Nemis avtomobil aksessuarlari',
+        title: 'Shakarsiz shirinliklar',
         desc: 'BMW, Mercedes, Audi',
         image: '/images/placeholder.png',
         badge: t('Premium'),
         gradient: 'from-emerald-700 to-green-800',
       },
       {
-        title: 'Skandinav uy buyumlari',
+        title: 'Kosmetika',
         desc: 'IKEA, H&M Home, Nordic',
         image: '/images/placeholder.png',
         badge: t('Bestseller'),
         gradient: 'from-green-700 to-emerald-800',
-      },
-      {
-        title: 'Ispaniya mahsulotlari',
-        desc: 'Zara, Mango, Desigual',
-        image: '/images/placeholder.png',
-        badge: t('Trend'),
-        gradient: 'from-emerald-600 to-teal-700',
       },
     ],
     [t]
@@ -718,7 +715,7 @@ export default function Page() {
                 className="border-0 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-3 cursor-pointer group overflow-hidden bg-white/80 backdrop-blur-sm animate-fade-scale p-5"
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden h-[300px]">
                   <Swiper
                     modules={[Navigation, Pagination]}
                     spaceBetween={10}
@@ -726,17 +723,23 @@ export default function Page() {
                     pagination={{ clickable: true }}
                     loop={true}
                     navigation={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    height={300}
+                    className="h-[300px]"
                   >
                     {category?.prodImages?.map((image, index) => (
-                      <SwiperSlide key={index}>
-                        <Image
+                      <SwiperSlide key={index} className="h-[300px]">
+                        <AntdImage
                           src={image}
                           alt={`image-${index}`}
-                          width={500}
-                          height={500}
-                          className="h-[300px] w-full object-cover rounded-lg"
+                          height={300}
+                          style={{
+                            objectFit: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            width: '100% !important',
+                            height: '300px !important',
+                          }}
+                          className="h-[300px] w-full object-cover bg-center bg-cover rounded-lg"
                         />
                       </SwiperSlide>
                     ))}

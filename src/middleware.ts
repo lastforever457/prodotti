@@ -1,21 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server'
+// middleware.ts
+import createMiddleware from 'next-intl/middleware'
+import { NextRequest } from 'next/server'
 
-const PUBLIC_FILE = /\.(.*)$/
+const intlMiddleware = createMiddleware({
+  // Siz ishlatmoqchi bo'lgan tillar
+  locales: ['eng', 'uzb', 'rus'],
+
+  // Standart til
+  defaultLocale: 'rus',
+})
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  return intlMiddleware(request)
+}
 
-  if (
-    pathname.startsWith('/_next') ||
-    pathname.startsWith('/api') ||
-    pathname.startsWith('/favicon.ico') ||
-    PUBLIC_FILE.test(pathname)
-  ) {
-    return
-  }
-
-  // If no locale, redirect to default
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL('/rus', request.url))
-  }
+// middleware faollashadigan route'lar
+export const config = {
+  matcher: [
+    // static fayllar, api, favicon va boshqalarni chetlab o'tamiz
+    '/((?!api|_next|_static|favicon.ico|.*\\..*).*)',
+  ],
 }

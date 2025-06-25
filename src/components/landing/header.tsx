@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Button } from '../ui/button'
 import ChangeLanguage from '../widgets/change-language'
 
 const Header = () => {
@@ -102,9 +101,6 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-            <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white mt-4">
-              {t('order now')}
-            </Button>
           </nav>
         </div>
       )}

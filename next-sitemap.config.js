@@ -7,22 +7,22 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  alternateRefs: [
-    {
-      href: `${siteUrl}/eng`,
-      hreflang: 'eng',
-    },
-    {
-      href: `${siteUrl}/uzb`,
-      hreflang: 'uzb',
-    },
-    {
-      href: `${siteUrl}/rus`,
-      hreflang: 'rus',
-    },
-  ],
-  i18n: {
-    locales: ['eng', 'uzb', 'rus'],
-    defaultLocale: 'eng',
-  },
+  // alternateRefs: [
+  //   {
+  //     href: `${siteUrl}/eng`,
+  //     hreflang: 'eng',
+  //   },
+  //   {
+  //     href: `${siteUrl}/uzb`,
+  //     hreflang: 'uzb',
+  //   },
+  //   {
+  //     href: `${siteUrl}/rus`,
+  //     hreflang: 'rus',
+  //   },
+  // ],
+  // i18n: {
+  //   locales: ['eng', 'uzb', 'rus'],
+  //   defaultLocale: 'eng',
+  // },
 }

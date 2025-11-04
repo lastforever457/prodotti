@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { Clock, Instagram, Mail, MapPin, Phone } from 'lucide-react'
-import { useTranslations } from 'next-intl'
-import dynamic from 'next/dynamic'
-import Image from 'next/image'
-import Link from 'next/link'
-import icon from '../../../public/images/image.png'
-const MapComponent = dynamic(() => import('../map-component'), { ssr: false })
+import { Clock, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import icon from "../../../public/images/image.png";
+const MapComponent = dynamic(() => import("../map-component"), { ssr: false });
 
 const Footer = () => {
-  const t = useTranslations()
+  const t = useTranslations();
 
   return (
     <footer
@@ -27,7 +27,7 @@ const Footer = () => {
               className="h-16 w-auto"
             />
             <p className="text-gray-400 leading-relaxed max-w-md">
-              {t('footer-desc')}
+              {t("footer-desc")}
             </p>
             <div className="flex space-x-4">
               <Link
@@ -41,16 +41,16 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold mb-6 text-lg">{t('contact us')}</h4>
+            <h4 className="font-bold mb-6 text-lg">{t("contact us")}</h4>
             <div className="space-y-4 text-gray-400">
               <Link
-                href="tel:+998950533333"
+                href="tel:+998950779009"
                 className="flex items-center space-x-3"
               >
                 <div className="">
                   <Phone className="w-5 h-5 text-stone-300" />
                 </div>
-                <span>+998 95 053 33 33</span>
+                <span>+998 95 077 90 09</span>
               </Link>
               <div className="flex items-center space-x-3">
                 <div className="">
@@ -68,7 +68,7 @@ const Footer = () => {
                 <div className="">
                   <Clock className="w-5 h-5 text-stone-300" />
                 </div>
-                <span>{t('har kuni')}: 08:00-19:00</span>
+                <span>{t("har kuni")}: 08:00-19:00</span>
               </div>
             </div>
           </div>
@@ -79,13 +79,13 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
           <p>
-            &copy; {new Date().getFullYear()} PRODOTTI Boutique.{' '}
-            {t('Barcha huquqlar himoyalangan')}
+            &copy; {new Date().getFullYear()} PRODOTTI Boutique.{" "}
+            {t("Barcha huquqlar himoyalangan")}
           </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

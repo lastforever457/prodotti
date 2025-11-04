@@ -126,7 +126,7 @@ const Faq = () => {
               <p className="text-gray-600 mb-6">{t('faq-desc-2')}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="tel:+998950533333"
+                  href="tel:+998950779009"
                   className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-700 text-white rounded-full font-semibold hover:from-emerald-700 hover:to-green-800 transition-all duration-300 shadow-lg shadow-emerald-500/25 group"
                 >
                   <Phone className="mr-2 w-4 h-4 group-hover:animate-bounce" />

@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import { Image as AntdImage } from 'antd'
-import useEmblaCarousel from 'embla-carousel-react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Image as AntdImage } from "antd";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dispatch,
   SetStateAction,
   useCallback,
   useEffect,
   useState,
-} from 'react'
-import { Button } from '../ui/button'
+} from "react";
+import { Button } from "../ui/button";
 
 const EmblaProducts = ({
   images,
-  className = '',
+  className = "",
   isPreviewOpen,
   previewIndex,
   previewScale,
@@ -24,142 +24,142 @@ const EmblaProducts = ({
   setPreviewScale,
   setPreviewRotation,
 }: {
-  images: string[]
-  className?: string
-  isPreviewOpen: boolean
-  previewIndex: number
-  previewScale: number
-  previewRotation: number
-  setIsPreviewOpen: Dispatch<SetStateAction<boolean>>
-  setPreviewIndex: Dispatch<SetStateAction<number>>
-  setPreviewScale: Dispatch<SetStateAction<number>>
-  setPreviewRotation: Dispatch<SetStateAction<number>>
+  images: string[];
+  className?: string;
+  isPreviewOpen: boolean;
+  previewIndex: number;
+  previewScale: number;
+  previewRotation: number;
+  setIsPreviewOpen: Dispatch<SetStateAction<boolean>>;
+  setPreviewIndex: Dispatch<SetStateAction<number>>;
+  setPreviewScale: Dispatch<SetStateAction<number>>;
+  setPreviewRotation: Dispatch<SetStateAction<number>>;
 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   // Preview states
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev()
-  }, [emblaApi])
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   const scrollTo = useCallback(
     (index: number) => {
-      if (emblaApi) emblaApi.scrollTo(index)
+      if (emblaApi) emblaApi.scrollTo(index);
     },
     [emblaApi]
-  )
+  );
 
   const onInit = useCallback((emblaApi: any) => {
-    setScrollSnaps(emblaApi.scrollSnapList())
-  }, [])
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, []);
 
   const onSelect = useCallback((emblaApi: any) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap())
-  }, [])
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
 
   useEffect(() => {
-    if (!emblaApi) return
+    if (!emblaApi) return;
 
-    onInit(emblaApi)
-    onSelect(emblaApi)
-    emblaApi.on('reInit', onInit)
-    emblaApi.on('select', onSelect)
-  }, [emblaApi, onInit, onSelect])
+    onInit(emblaApi);
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onInit);
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onInit, onSelect]);
 
   // Preview functions
   const openPreview = (index: number) => {
-    console.log('Preview ochilmoqda:', index)
-    setPreviewIndex(index)
-    setIsPreviewOpen(true)
-    setPreviewScale(1)
-    setPreviewRotation(0)
-    document.body.style.overflow = 'hidden'
-  }
+    console.log("Preview ochilmoqda:", index);
+    setPreviewIndex(index);
+    setIsPreviewOpen(true);
+    setPreviewScale(1);
+    setPreviewRotation(0);
+    document.body.style.overflow = "hidden";
+  };
 
   const closePreview = () => {
-    setIsPreviewOpen(false)
-    document.body.style.overflow = 'unset'
-  }
+    setIsPreviewOpen(false);
+    document.body.style.overflow = "unset";
+  };
 
   const previewPrev = () => {
-    setPreviewIndex((prev) => (prev === 0 ? images?.length - 1 : prev - 1))
-    setPreviewScale(1)
-    setPreviewRotation(0)
-  }
+    setPreviewIndex((prev) => (prev === 0 ? images?.length - 1 : prev - 1));
+    setPreviewScale(1);
+    setPreviewRotation(0);
+  };
 
   const previewNext = () => {
-    setPreviewIndex((prev) => (prev === images?.length - 1 ? 0 : prev + 1))
-    setPreviewScale(1)
-    setPreviewRotation(0)
-  }
+    setPreviewIndex((prev) => (prev === images?.length - 1 ? 0 : prev + 1));
+    setPreviewScale(1);
+    setPreviewRotation(0);
+  };
 
   const zoomIn = () => {
-    setPreviewScale((prev) => Math.min(prev + 0.25, 5))
-  }
+    setPreviewScale((prev) => Math.min(prev + 0.25, 5));
+  };
 
   const zoomOut = () => {
-    setPreviewScale((prev) => Math.max(prev - 0.25, 0.25))
-  }
+    setPreviewScale((prev) => Math.max(prev - 0.25, 0.25));
+  };
 
   const rotate = () => {
-    setPreviewRotation((prev) => prev + 90)
-  }
+    setPreviewRotation((prev) => prev + 90);
+  };
 
   const downloadImage = () => {
-    const link = document.createElement('a')
-    link.href = images[previewIndex]
-    link.download = `image-${previewIndex + 1}`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement("a");
+    link.href = images[previewIndex];
+    link.download = `image-${previewIndex + 1}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Handle keyboard events
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isPreviewOpen) return
+      if (!isPreviewOpen) return;
 
       switch (e.key) {
-        case 'Escape':
-          closePreview()
-          break
-        case 'ArrowLeft':
-          previewPrev()
-          break
-        case 'ArrowRight':
-          previewNext()
-          break
-        case '+':
-        case '=':
-          if (e.shiftKey) zoomIn()
-          break
-        case '-':
-          zoomOut()
-          break
-        case 'r':
-        case 'R':
-          rotate()
-          break
+        case "Escape":
+          closePreview();
+          break;
+        case "ArrowLeft":
+          previewPrev();
+          break;
+        case "ArrowRight":
+          previewNext();
+          break;
+        case "+":
+        case "=":
+          if (e.shiftKey) zoomIn();
+          break;
+        case "-":
+          zoomOut();
+          break;
+        case "r":
+        case "R":
+          rotate();
+          break;
       }
-    }
+    };
 
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [isPreviewOpen, images?.length])
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isPreviewOpen, images?.length]);
 
   if (!images || images?.length === 0) {
     return (
       <div className="h-[300px] bg-gray-100 rounded-lg flex items-center justify-center">
         No images available
       </div>
-    )
+    );
   }
 
   return (
@@ -171,10 +171,10 @@ const EmblaProducts = ({
               <div key={index} className="flex-[0_0_100%] min-w-0">
                 <div className="relative h-[300px] group cursor-pointer">
                   <AntdImage
-                    src={image || '/placeholder.svg'}
+                    src={image || "/placeholder.svg"}
                     alt={`Slide ${index + 1}`}
                     height={300}
-                    width={'100%'}
+                    width={"100%"}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="h-[300px] w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
@@ -208,14 +208,14 @@ const EmblaProducts = ({
 
         {/* Pagination Dots */}
         {images?.length > 1 && (
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center overflow-x-auto w-full gap-2 mt-4">
             {scrollSnaps.map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full transition-all duration-200 ${
                   index === selectedIndex
-                    ? 'bg-emerald-500 w-6'
-                    : 'bg-emerald-50 hover:bg-emerald-100'
+                    ? "bg-emerald-500 w-6"
+                    : "bg-emerald-50 hover:bg-emerald-100"
                 }`}
                 onClick={() => scrollTo(index)}
               />
@@ -224,7 +224,7 @@ const EmblaProducts = ({
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default EmblaProducts
+export default EmblaProducts;

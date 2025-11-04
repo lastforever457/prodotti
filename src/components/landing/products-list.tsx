@@ -14,8 +14,10 @@ import gullon from "../../../public/images/gullon.png";
 import italcarciofi from "../../../public/images/italcarciofi.png";
 import leone from "../../../public/images/leone.png";
 import maePloy from "../../../public/images/mae-ploy.jpg";
+import milano from "../../../public/images/milano.png";
 import muraca from "../../../public/images/muraca.png";
 import nestiDante from "../../../public/images/nesti-dante.png";
+import neuhaus from "../../../public/images/neuhaus.png";
 import orlando from "../../../public/images/orlando.png";
 import schogetten from "../../../public/images/schogetten.jpg";
 import sud from "../../../public/images/sud.png";
@@ -32,8 +34,12 @@ const ProductsList = () => {
     () => [
       {
         title: t("Italya mahsulotlari"),
-        desc: "Leone, Orlando Grondona, Italcarciofi, Granoro, Farchioni, Muraca",
+        desc: "Baratti & Milano, Leone, Orlando Grondona, Italcarciofi, Granoro, Farchioni, Muraca",
         prodImages: [
+          "/images/products/milano1.png",
+          "/images/products/milano2.png",
+          "/images/products/milano3.png",
+          "/images/products/milano4.png",
           "/images/products/leone1.png",
           "/images/products/leone2.png",
           "/images/products/leone3.png",
@@ -66,7 +72,15 @@ const ProductsList = () => {
           "/images/products/muraca3.png",
         ],
         gradient: "from-emerald-600 to-green-700",
-        images: [leone, orlando, italcarciofi, granoro, farchioni, muraca],
+        images: [
+          milano,
+          leone,
+          orlando,
+          italcarciofi,
+          granoro,
+          farchioni,
+          muraca,
+        ],
       },
       {
         title: t("Panasia tovarlari"),
@@ -147,6 +161,20 @@ const ProductsList = () => {
         ],
         gradient: "from-green-700 to-emerald-800",
         images: [sud],
+      },
+
+      {
+        title: t("Belgium products"),
+        desc: "Neuhaus",
+        prodImages: [
+          "/images/products/neuhaus1.jpg",
+          "/images/products/neuhaus2.png",
+          "/images/products/neuhaus3.png",
+          "/images/products/neuhaus4.png",
+          "/images/products/neuhaus5.png",
+        ],
+        gradient: "from-green-700 to-emerald-800",
+        images: [neuhaus],
       },
     ],
     [t]

@@ -1,111 +1,157 @@
-'use client'
+"use client";
 
-import { Card, CardContent } from '@/components/ui/card'
-import { useTranslations } from 'next-intl'
-import Image from 'next/image'
-import { useMemo, useState } from 'react'
-import aroyD from '../../../public/images/aroy-d.png'
-import chaokoh from '../../../public/images/chaokoh.jpg'
-import fabbri from '../../../public/images/fabbri.png'
-import falcone from '../../../public/images/falcone.png'
-import farchioni from '../../../public/images/farchioni.png'
-import granoro from '../../../public/images/granoro.png'
-import gullon from '../../../public/images/gullon.png'
-import italcarciofi from '../../../public/images/italcarciofi.png'
-import maePloy from '../../../public/images/mae-ploy.jpg'
-import muraca from '../../../public/images/muraca.png'
-import nestiDante from '../../../public/images/nesti-dante.png'
-import schogetten from '../../../public/images/schogetten.jpg'
-import EmblaProducts from './embla-products'
+import { Card, CardContent } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useMemo, useState } from "react";
+import aroyD from "../../../public/images/aroy-d.png";
+import chaokoh from "../../../public/images/chaokoh.jpg";
+import fabbri from "../../../public/images/fabbri.png";
+import falcone from "../../../public/images/falcone.png";
+import farchioni from "../../../public/images/farchioni.png";
+import granoro from "../../../public/images/granoro.png";
+import gullon from "../../../public/images/gullon.png";
+import italcarciofi from "../../../public/images/italcarciofi.png";
+import leone from "../../../public/images/leone.png";
+import maePloy from "../../../public/images/mae-ploy.jpg";
+import muraca from "../../../public/images/muraca.png";
+import nestiDante from "../../../public/images/nesti-dante.png";
+import orlando from "../../../public/images/orlando.png";
+import schogetten from "../../../public/images/schogetten.jpg";
+import sud from "../../../public/images/sud.png";
+import EmblaProducts from "./embla-products";
 
 const ProductsList = () => {
-  const t = useTranslations()
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
-  const [previewIndex, setPreviewIndex] = useState(0)
-  const [previewScale, setPreviewScale] = useState(1)
-  const [previewRotation, setPreviewRotation] = useState(0)
+  const t = useTranslations();
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const [previewScale, setPreviewScale] = useState(1);
+  const [previewRotation, setPreviewRotation] = useState(0);
 
   const categories = useMemo(
     () => [
       {
-        title: t('Italya mahsulotlari'),
-        desc: 'Italcarciofi, Granoro, Farchioni',
+        title: t("Italya mahsulotlari"),
+        desc: "Italcarciofi, Granoro, Farchioni, Muraca, Leone, Orlando Grondona",
         prodImages: [
-          '/images/products/006A7431.png',
-          '/images/products/granoro1.png',
-          '/images/products/granoro2.png',
-          '/images/products/granoro3.png',
-          '/images/products/farchioni1.png',
-          '/images/products/farchioni2.png',
-          '/images/products/muraca1.png',
-          '/images/products/muraca2.png',
-          '/images/products/muraca3.png',
+          "/images/products/006A7431.png",
+          "/images/products/granoro1.png",
+          "/images/products/granoro2.png",
+          "/images/products/granoro3.png",
+          "/images/products/farchioni1.png",
+          "/images/products/farchioni2.png",
+          "/images/products/muraca1.png",
+          "/images/products/muraca2.png",
+          "/images/products/muraca3.png",
+          "/images/products/leone1.png",
+          "/images/products/leone2.png",
+          "/images/products/leone3.png",
+          "/images/products/leone4.png",
+          "/images/products/leone5.png",
+          "/images/products/leone6.png",
+          "/images/products/leone7.png",
+          "/images/products/leone8.png",
+          "/images/products/leone9.png",
+          "/images/products/leone10.png",
+          "/images/products/leone11.png",
+          "/images/products/leone12.png",
+          "/images/products/leone13.png",
+          "/images/products/leone14.png",
+          "/images/products/leone15.png",
+          "/images/products/leone16.png",
+          "/images/products/leone17.png",
+          "/images/products/orlando1.png",
+          "/images/products/orlando2.png",
+          "/images/products/orlando3.png",
+          "/images/products/orlando4.png",
         ],
-        gradient: 'from-emerald-600 to-green-700',
-        images: [italcarciofi, granoro, farchioni, muraca],
+        gradient: "from-emerald-600 to-green-700",
+        images: [italcarciofi, granoro, farchioni, muraca, leone, orlando],
       },
       {
-        title: t('Panasia tovarlari'),
-        desc: 'Chaokoh, Aroy-D, Mae Ploy',
+        title: t("Panasia tovarlari"),
+        desc: "Chaokoh, Aroy-D, Mae Ploy",
         prodImages: [
-          '/images/products/aroy-d9.png',
-          '/images/products/aroy-d1.png',
-          '/images/products/aroy-d2.png',
-          '/images/products/aroy-d4.png',
-          '/images/products/aroy-d5.png',
-          '/images/products/aroy-d6.png',
-          '/images/products/aroy-d7.png',
-          '/images/products/aroy-d8.png',
-          '/images/products/chaokoh1.png',
-          '/images/products/chaokoh2.png',
-          '/images/products/mae-ploy.png',
+          "/images/products/aroy-d9.png",
+          "/images/products/aroy-d1.png",
+          "/images/products/aroy-d2.png",
+          "/images/products/aroy-d4.png",
+          "/images/products/aroy-d5.png",
+          "/images/products/aroy-d6.png",
+          "/images/products/aroy-d7.png",
+          "/images/products/aroy-d8.png",
+          "/images/products/chaokoh1.png",
+          "/images/products/chaokoh2.png",
+          "/images/products/mae-ploy.png",
         ],
-        gradient: 'from-green-600 to-emerald-700',
+        gradient: "from-green-600 to-emerald-700",
         images: [aroyD, chaokoh, maePloy],
       },
       {
-        title: t('Shirinliklar'),
-        desc: 'FABBRI, Falcone, Schogetten, Gullon',
+        title: t("Shirinliklar"),
+        desc: "FABBRI, Falcone, Schogetten, Gullon",
         prodImages: [
-          '/images/products/fabbri5.png',
-          '/images/products/fabbri4.png',
-          '/images/products/fabbri3.png',
-          '/images/products/fabbri1.png',
-          '/images/products/fabbri2.png',
-          '/images/products/amaretti1.png',
-          '/images/products/amaretti2.png',
-          '/images/products/cantucci1.png',
-          '/images/products/cantucci2.png',
-          '/images/products/schogetten1.png',
-          '/images/products/schogetten2.png',
-          '/images/products/schogetten3.png',
-          '/images/products/schogetten4.png',
-          '/images/products/gullon1.png',
-          '/images/products/gullon2.png',
-          '/images/products/gullon3.png',
+          "/images/products/fabbri5.png",
+          "/images/products/fabbri4.png",
+          "/images/products/fabbri3.png",
+          "/images/products/fabbri1.png",
+          "/images/products/fabbri2.png",
+          "/images/products/amaretti1.png",
+          "/images/products/amaretti2.png",
+          "/images/products/cantucci1.png",
+          "/images/products/cantucci2.png",
+          "/images/products/schogetten1.png",
+          "/images/products/schogetten2.png",
+          "/images/products/schogetten3.png",
+          "/images/products/schogetten4.png",
+          "/images/products/gullon1.png",
+          "/images/products/gullon2.png",
+          "/images/products/gullon3.png",
         ],
         images: [fabbri, falcone, schogetten, gullon],
-        gradient: 'from-teal-600 to-emerald-700',
+        gradient: "from-teal-600 to-emerald-700",
       },
 
       {
-        title: t('kosmetikalar'),
-        desc: 'Nesti Dante',
+        title: t("kosmetikalar"),
+        desc: "Nesti Dante",
         prodImages: [
-          '/images/products/nesti1.png',
-          '/images/products/nesti2.png',
-          '/images/products/nesti3.png',
-          '/images/products/nesti4.png',
-          '/images/products/nesti5.png',
-          '/images/products/nesti6.png',
-          '/images/products/nesti7.png',
+          "/images/products/nesti1.png",
+          "/images/products/nesti2.png",
+          "/images/products/nesti3.png",
+          "/images/products/nesti4.png",
+          "/images/products/nesti5.png",
+          "/images/products/nesti6.png",
+          "/images/products/nesti7.png",
         ],
-        gradient: 'from-green-700 to-emerald-800',
+        gradient: "from-green-700 to-emerald-800",
         images: [nestiDante],
+      },
+
+      {
+        title: t("French products"),
+        desc: "Quai Sud",
+        prodImages: [
+          "/images/products/sud1.png",
+          "/images/products/sud2.png",
+          "/images/products/sud3.png",
+          "/images/products/sud4.png",
+          "/images/products/sud5.png",
+          "/images/products/sud6.png",
+          "/images/products/sud7.png",
+          "/images/products/sud8.png",
+          "/images/products/sud9.png",
+          "/images/products/sud10.png",
+          "/images/products/sud11.png",
+          "/images/products/sud12.png",
+          "/images/products/sud13.png",
+        ],
+        gradient: "from-green-700 to-emerald-800",
+        images: [sud],
       },
     ],
     [t]
-  )
+  );
 
   return categories.map((category: Record<string, any>, index: number) => (
     <Card
@@ -137,7 +183,7 @@ const ProductsList = () => {
             <div key={imgIndex} className="flex-shrink-0">
               <Image
                 priority
-                src={image || '/placeholder.svg'}
+                src={image || "/placeholder.svg"}
                 alt={`thumbnail-${imgIndex}`}
                 width={50}
                 height={50}
@@ -158,7 +204,7 @@ const ProductsList = () => {
         </div>
       </CardContent>
     </Card>
-  ))
-}
+  ));
+};
 
-export default ProductsList
+export default ProductsList;

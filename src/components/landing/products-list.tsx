@@ -139,7 +139,6 @@ const ProductsList = () => {
           "/images/products/sud5.png",
           "/images/products/sud6.png",
           "/images/products/sud7.png",
-          "/images/products/sud8.png",
           "/images/products/sud9.png",
           "/images/products/sud10.png",
           "/images/products/sud11.png",

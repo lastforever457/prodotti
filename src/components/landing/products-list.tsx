@@ -127,22 +127,6 @@ const ProductsList = () => {
       },
 
       {
-        title: t("kosmetikalar"),
-        desc: "Nesti Dante",
-        prodImages: [
-          "/images/products/nesti1.png",
-          "/images/products/nesti2.png",
-          "/images/products/nesti3.png",
-          "/images/products/nesti4.png",
-          "/images/products/nesti5.png",
-          "/images/products/nesti6.png",
-          "/images/products/nesti7.png",
-        ],
-        gradient: "from-green-700 to-emerald-800",
-        images: [nestiDante],
-      },
-
-      {
         title: t("French products"),
         desc: "Quai Sud",
         prodImages: [
@@ -175,6 +159,21 @@ const ProductsList = () => {
         ],
         gradient: "from-green-700 to-emerald-800",
         images: [neuhaus],
+      },
+      {
+        title: t("kosmetikalar"),
+        desc: "Nesti Dante",
+        prodImages: [
+          "/images/products/nesti1.png",
+          "/images/products/nesti2.png",
+          "/images/products/nesti3.png",
+          "/images/products/nesti4.png",
+          "/images/products/nesti5.png",
+          "/images/products/nesti6.png",
+          "/images/products/nesti7.png",
+        ],
+        gradient: "from-green-700 to-emerald-800",
+        images: [nestiDante],
       },
     ],
     [t]
